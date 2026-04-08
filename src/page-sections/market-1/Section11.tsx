@@ -2,6 +2,7 @@ import Grid from "@component/grid/Grid";
 import Container from "@component/Container";
 import ProductCard1 from "@component/product-cards/ProductCard1";
 import CategorySectionHeader from "@component/CategorySectionHeader";
+import { t } from "@utils/utils";
 // API FUNCTIONS
 import api from "@utils/__api__/market-1";
 
@@ -10,7 +11,7 @@ export default async function Section11() {
 
   return (
     <Container mb="70px">
-      <CategorySectionHeader title="More For You" seeMoreLink="#" />
+      <CategorySectionHeader title={t("More For You")} seeMoreLink="#" />
 
       <Grid container spacing={6}>
         {moreItems.map((item, ind) => (
@@ -24,7 +25,7 @@ export default async function Section11() {
               off={item.discount}
               rating={item.rating}
               imgUrl={item.thumbnail}
-              images={item.images as string[]}
+              images={item.images ?? ["/placeholder.png"]}
             />
           </Grid>
         ))}

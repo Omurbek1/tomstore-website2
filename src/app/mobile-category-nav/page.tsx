@@ -15,6 +15,7 @@ import MobileNavigationBar from "@component/mobile-navigation";
 import { Accordion, AccordionHeader } from "@component/accordion";
 // CUSTOM HOOK
 import useWindowSize from "@hook/useWindowSize";
+import { t } from "@utils/utils";
 
 import { MobileCategoryNavStyle } from "./styles";
 import MobileCategoryImageBox from "./MobileCategoryImageBox";
@@ -65,7 +66,7 @@ export default function MobileCategoryNav() {
               </Icon>
 
               <Typography className="ellipsis" textAlign="center" fontSize="11px" lineHeight="1">
-                {item.title}
+                {t(item.title)}
               </Typography>
             </div>
           ))}
@@ -74,7 +75,7 @@ export default function MobileCategoryNav() {
 
       <div className="container">
         <Typography fontWeight="600" fontSize="15px" mb="1rem">
-          Recommended Categories
+          {t("Recommended Categories")}
         </Typography>
 
         <Box mb="2rem">
@@ -96,7 +97,7 @@ export default function MobileCategoryNav() {
               <Accordion>
                 <AccordionHeader px="0px" py="10px">
                   <Typography fontWeight="600" fontSize="15px">
-                    {item.title}
+                    {t(item.title)}
                   </Typography>
                 </AccordionHeader>
 

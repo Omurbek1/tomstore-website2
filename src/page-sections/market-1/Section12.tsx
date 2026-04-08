@@ -4,6 +4,7 @@ import Icon from "@component/icon/Icon";
 import FlexBox from "@component/FlexBox";
 import Container from "@component/Container";
 import { H4, SemiSpan } from "@component/Typography";
+import { t } from "@utils/utils";
 // API FUNCTIONS
 import api from "@utils/__api__/market-1";
 
@@ -36,10 +37,10 @@ export default async function Section12() {
               </FlexBox>
 
               <H4 mt="20px" mb="10px" textAlign="center">
-                {item.title}
+                {t(item.title)}
               </H4>
 
-              <SemiSpan textAlign="center">{item.description}</SemiSpan>
+              <SemiSpan textAlign="center">{t(item.description || "")}</SemiSpan>
             </FlexBox>
           </Grid>
         ))}

@@ -8,6 +8,7 @@ import NextImage from "@component/NextImage";
 import { Carousel } from "@component/carousel";
 import CategorySectionCreator from "@component/CategorySectionCreator";
 import { calculateDiscount, currency } from "@utils/utils";
+import { t } from "@utils/utils";
 // API FUNCTIONS
 import api from "@utils/__api__/market-1";
 
@@ -22,7 +23,7 @@ export default async function Section13() {
   const bigDiscountList = await api.getBigDiscountList();
 
   return (
-    <CategorySectionCreator iconName="gift" title="Big Discounts" seeMoreLink="#">
+    <CategorySectionCreator iconName="gift" title={t("Big Discounts")} seeMoreLink="#">
       <Box my="-0.25rem">
         <Carousel dots slidesToShow={6} responsive={responsive}>
           {bigDiscountList.map((item) => (

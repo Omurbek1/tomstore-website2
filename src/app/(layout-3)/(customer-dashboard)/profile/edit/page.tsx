@@ -9,10 +9,11 @@ import { Button } from "@component/buttons";
 import DashboardPageHeader from "@component/DashboardPageHeader";
 // PAGE SECTION COMPONENTS
 import { ProfileEditForm } from "@sections/customer-dashboard/profile";
+import { t } from "@utils/utils";
 
 const HEADER_LINK = (
   <Link href="/profile">
-    <Button color="primary">Back</Button>
+    <Button color="primary">{t("Back")}</Button>
   </Link>
 );
 
@@ -23,7 +24,7 @@ export default async function ProfileEditor() {
     <Fragment>
       <DashboardPageHeader
         Icon={<IconUserFilled size={27} />}
-        title="Edit Profile"
+        title={t("Edit Profile")}
         button={HEADER_LINK}
       />
 

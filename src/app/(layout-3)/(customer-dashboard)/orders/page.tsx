@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { IconShoppingBagCheck } from "@tabler/icons-react";
 // API FUNCTIONS
 import api from "@utils/__api__/orders";
+import { t } from "@utils/utils";
 // GLOBAL CUSTOM COMPONENTS
 import Hidden from "@component/hidden";
 import TableRow from "@component/TableRow";
@@ -17,13 +18,13 @@ export default async function OrderList() {
 
   return (
     <Fragment>
-      <DashboardPageHeader title="My Orders" Icon={<IconShoppingBagCheck size={27} />} />
+      <DashboardPageHeader title={t("My Orders")} Icon={<IconShoppingBagCheck size={27} />} />
 
       <Hidden down={769}>
         <TableRow boxShadow="none" padding="0px 18px" backgroundColor="transparent">
           {ORDER_HEADERS.map((item) => (
             <H5 key={item} fontWeight={500} color="text.muted" my="0px" mx="6px" textAlign="left">
-              {item}
+              {t(item)}
             </H5>
           ))}
 

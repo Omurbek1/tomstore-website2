@@ -12,6 +12,7 @@ import RelatedProducts from "@component/products/RelatedProducts";
 import FrequentlyBought from "@component/products/FrequentlyBought";
 import ProductDescription from "@component/products/ProductDescription";
 import Product from "@models/product.model";
+import { t } from "@utils/utils";
 
 // ==============================================================
 type Props = {
@@ -37,7 +38,7 @@ export default function ProductView({ shops, relatedProducts, frequentlyBought }
           onClick={handleOptionClick("description")}
           borderBottom={selectedOption === "description" ? "2px solid" : ""}
           color={selectedOption === "description" ? "primary.main" : "text.muted"}>
-          Description
+          {t("Description")}
         </H6>
 
         <H6
@@ -48,7 +49,7 @@ export default function ProductView({ shops, relatedProducts, frequentlyBought }
           onClick={handleOptionClick("review")}
           borderBottom={selectedOption === "review" ? "2px solid" : ""}
           color={selectedOption === "review" ? "primary.main" : "text.muted"}>
-          Review (3)
+          {t("Review")} (3)
         </H6>
       </FlexBox>
 

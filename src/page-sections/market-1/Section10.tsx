@@ -6,6 +6,7 @@ import Container from "@component/Container";
 import NextImage from "@component/NextImage";
 import Typography from "@component/Typography";
 import CategorySectionHeader from "@component/CategorySectionHeader";
+import { t } from "@utils/utils";
 // API FUNCTIONS
 import api from "@utils/__api__/market-1";
 
@@ -14,7 +15,7 @@ export default async function Section10() {
 
   return (
     <Container mb="70px">
-      <CategorySectionHeader title="Categories" iconName="categories" seeMoreLink="#" />
+      <CategorySectionHeader title={t("Categories")} iconName="categories" seeMoreLink="#" />
 
       <Grid container spacing={6}>
         {categories.map((item) => (
@@ -28,7 +29,12 @@ export default async function Section10() {
                 boxShadow="small"
                 alignItems="center">
                 <Box width={50} height={50}>
-                  <NextImage width={52} height={52} alt="fashion" src={item.image} />
+                  <NextImage
+                    width={52}
+                    height={52}
+                    alt="fashion"
+                    src={item.image || "/placeholder.png"}
+                  />
                 </Box>
 
                 <Typography fontWeight={600} fontSize={14} ml="8px">

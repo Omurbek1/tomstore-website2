@@ -12,6 +12,7 @@ import { H4, Span } from "@component/Typography";
 import { Accordion, AccordionHeader } from "@component/accordion";
 import { CategoryItem } from "@models/categoryNavList.model";
 import { NavWithChild } from "interfaces";
+import { t } from "@utils/utils";
 
 // STYLED COMPONENTS
 const NavbarRoot = styled(Card)(({ theme }) => ({
@@ -72,7 +73,7 @@ export default function SideNavbar2({ navList }: Props) {
     <Scrollbar>
       <NavbarRoot>
         <FlexBox padding="10px 18px" borderRadius="5px 5px 0px 0px" bg="gray.300">
-          <H4>Categories</H4>
+          <H4>{t("Categories")}</H4>
         </FlexBox>
 
         {navList.map((item, ind) => {
@@ -87,7 +88,7 @@ export default function SideNavbar2({ navList }: Props) {
                       </Icon>
 
                       <Span fontWeight={600} fontSize={14}>
-                        {item.title}
+                        {t(item.title)}
                       </Span>
                     </FlexBox>
                   </AccordionHeader>
@@ -102,7 +103,7 @@ export default function SideNavbar2({ navList }: Props) {
                     </Icon>
 
                     <Span fontWeight={600} fontSize={14}>
-                      {item.title}
+                      {t(item.title)}
                     </Span>
                   </FlexBox>
                 </NavLink>

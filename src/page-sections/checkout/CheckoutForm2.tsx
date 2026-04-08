@@ -17,6 +17,7 @@ import { Card1 } from "@component/Card1";
 import { Button } from "@component/buttons";
 import TextField from "@component/text-field";
 import Typography, { H6, Paragraph } from "@component/Typography";
+import { t } from "@utils/utils";
 
 const initialValues = {
   address: "",
@@ -40,7 +41,7 @@ type FormValues = yup.InferType<typeof checkoutSchema>;
 
 export default function CheckoutForm2() {
   const router = useRouter();
-  const [dateList, setDateList] = useState([]);
+  const [dateList, setDateList] = useState<{ label: string; value: Date }[]>([]);
   const [hasVoucher, setHasVoucher] = useState(false);
 
   const handleFormSubmit = async (values: FormValues) => {
@@ -55,7 +56,7 @@ export default function CheckoutForm2() {
   const toggleHasVoucher = () => setHasVoucher((has) => !has);
 
   useEffect(() => {
-    let list = [];
+    const list: { label: string; value: Date }[] = [];
     let today = new Date();
     let dateCount = today.getDate();
 
@@ -66,7 +67,7 @@ export default function CheckoutForm2() {
       list.push({ label: format(today, "dd MMMM"), value: today });
     }
 
-    setDateList(list as any);
+    setDateList(list);
   }, []);
 
   return (
@@ -81,14 +82,14 @@ export default function CheckoutForm2() {
               <Avatar bg="primary.main" size={32} color="primary.text" mr="0.875rem">
                 1
               </Avatar>
-              <Typography fontSize="20px">Delivery Details</Typography>
+              <Typography fontSize="20px">{t("Delivery Details")}</Typography>
             </FlexBox>
 
             <Box mb="1.75rem">
               <Grid container spacing={6}>
                 <Grid item sm={6} xs={12}>
                   <Select
-                    label="Delivery Date"
+                    label={t("Delivery Date")}
                     options={dateList}
                     value={values.date}
                     onChange={(date) => setFieldValue("date", date)}
@@ -97,8 +98,8 @@ export default function CheckoutForm2() {
                 </Grid>
                 <Grid item sm={6} xs={12}>
                   <Select
-                    label="Delivery Time"
-                    options={timeList}
+                    label={t("Delivery Time")}
+                    options={timeList.map((item) => ({ ...item, label: t(item.label) }))}
                     value={values.time}
                     onChange={(time) => setFieldValue("time", time)}
                     errorText={touched.time && (errors.time as string)}
@@ -107,7 +108,7 @@ export default function CheckoutForm2() {
               </Grid>
             </Box>
 
-            <Typography mb="0.75rem">Delivery Address</Typography>
+            <Typography mb="0.75rem">{t("Delivery Address")}</Typography>
             <Grid container spacing={6}>
               {addressList.map((item, ind) => (
                 <Grid item md={4} sm={6} xs={12} key={ind}>
@@ -120,7 +121,7 @@ export default function CheckoutForm2() {
                     cursor="pointer"
                     borderColor={item.address === values.address ? "primary.main" : "transparent"}
                     onClick={handleFieldValueChange(item.address, "address", setFieldValue)}>
-                    <H6 mb="0.25rem">{item.addressType}</H6>
+                    <H6 mb="0.25rem">{t(item.addressType)}</H6>
                     <Paragraph color="gray.700">{item.address}</Paragraph>
                   </Card>
                 </Grid>
@@ -133,10 +134,10 @@ export default function CheckoutForm2() {
               <Avatar bg="primary.main" size={32} color="primary.text" mr="0.875rem">
                 3
               </Avatar>
-              <Typography fontSize="20px">Personal Details</Typography>
+              <Typography fontSize="20px">{t("Personal Details")}</Typography>
             </FlexBox>
 
-            <Typography mb="0.75rem">Contact Information</Typography>
+            <Typography mb="0.75rem">{t("Contact Information")}</Typography>
 
             <Grid container spacing={6}>
               {contactList.map((item) => (
@@ -150,7 +151,7 @@ export default function CheckoutForm2() {
                     cursor="pointer"
                     borderColor={item.contact === values.contact ? "primary.main" : "transparent"}
                     onClick={handleFieldValueChange(item.contact, "contact", setFieldValue)}>
-                    <H6 mb="0.25rem">{item.contactType}</H6>
+                    <H6 mb="0.25rem">{t(item.contactType)}</H6>
                     <Paragraph color="gray.700">{item.contact}</Paragraph>
                   </Card>
                 </Grid>
@@ -163,10 +164,10 @@ export default function CheckoutForm2() {
               <Avatar bg="primary.main" size={32} color="primary.text" mr="0.875rem">
                 3
               </Avatar>
-              <Typography fontSize="20px">Payment Details</Typography>
+              <Typography fontSize="20px">{t("Payment Details")}</Typography>
             </FlexBox>
 
-            <Typography mb="0.75rem">Saved Payment Methods</Typography>
+            <Typography mb="0.75rem">{t("Saved Payment Methods")}</Typography>
 
             <Grid container spacing={6}>
               {paymentMethodList.map((item) => (
@@ -201,7 +202,7 @@ export default function CheckoutForm2() {
               mt="1.5rem"
               lineHeight="1"
               onClick={toggleHasVoucher}>
-              I have a voucher.
+              {t("I have a voucher.")}
             </Paragraph>
 
             {hasVoucher && (
@@ -209,18 +210,18 @@ export default function CheckoutForm2() {
                 <TextField
                   fullWidth
                   name="voucher"
-                  placeholder="Enter voucher code here"
+                  placeholder={t("Enter voucher code here")}
                   value={values.voucher || ""}
                   onChange={handleChange}
                 />
                 <Button variant="contained" color="primary" type="button" ml="1rem">
-                  Apply
+                  {t("Apply")}
                 </Button>
               </FlexBox>
             )}
 
             <Button variant="contained" color="primary" mt="1.5rem" type="submit" fullWidth>
-              Place Order
+              {t("Place Order")}
             </Button>
           </Card1>
         </form>

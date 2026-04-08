@@ -11,9 +11,9 @@ const StyledAvatar = styled.div.withConfig({
   overflow: hidden;
   position: relative;
   text-align: center;
-  min-width: ${({ size }) => size}px;
-  font-size: ${({ size }) => size / 2}px;
-  border-radius: ${({ size }) => size}px;
+  min-width: ${({ size }) => (size ?? 48)}px;
+  font-size: ${({ size }) => (size ?? 48) / 2}px;
+  border-radius: ${({ size }) => (size ?? 48)}px;
   width: "100%";
   img {
     object-fit: cover;

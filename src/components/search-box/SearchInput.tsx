@@ -11,6 +11,7 @@ import { Button } from "@component/buttons";
 import { Span } from "@component/Typography";
 import TextField from "@component/text-field";
 import SearchBoxStyle from "./styled";
+import { t } from "@utils/utils";
 
 export default function SearchInput() {
   const [resultList, setResultList] = useState<string[]>([]);
@@ -43,11 +44,11 @@ export default function SearchInput() {
           fullWidth
           onChange={handleSearch}
           className="search-field"
-          placeholder="Search and hit enter..."
+          placeholder={t("Search and hit enter...")}
         />
 
         <Button className="search-button" variant="contained" color="primary">
-          Search
+          {t("Search")}
         </Button>
 
         <Box className="menu-button" ml="14px" cursor="pointer">

@@ -25,7 +25,7 @@ export default async function ProductDetails({ params }: Props) {
         id={product.id}
         price={product.price}
         title={product.title}
-        images={product.images}
+        images={product.images || ["/placeholder.png"]}
       />
 
       <ProductView

@@ -123,6 +123,7 @@ export default function ProductCard9({
 }: ProductCard9Props) {
   const [open, setOpen] = useState(false);
   const { state, dispatch } = useCart();
+  const discount = off ?? 0;
   const cartItem = state.cart.find((item) => item.id === id);
 
   const toggleDialog = useCallback(() => setOpen((open) => !open), []);
@@ -139,7 +140,7 @@ export default function ProductCard9({
       <Grid container spacing={1}>
         <Grid item md={3} sm={4} xs={12}>
           <Box position="relative">
-            {!!off && (
+            {!!discount && (
               <Chip
                 top="10px"
                 left="10px"
@@ -149,7 +150,7 @@ export default function ProductCard9({
                 bg="primary.main"
                 position="absolute"
                 color="primary.text">
-                {off}% off
+                {discount}% off
               </Chip>
             )}
 
@@ -185,10 +186,10 @@ export default function ProductCard9({
 
             <FlexBox mt="0.5rem" mb="1rem" alignItems="center">
               <H5 fontWeight={600} color="primary.main" mr="0.5rem">
-                {calculateDiscount(price, off as number)}
+                {calculateDiscount(price, discount)}
               </H5>
 
-              {off > 0 && (
+              {discount > 0 && (
                 <SemiSpan fontWeight="600">
                   <del>{currency(price)}</del>
                 </SemiSpan>

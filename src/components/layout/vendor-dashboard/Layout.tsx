@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { PropsWithChildren } from "react";
 import Grid from "@component/grid/Grid";
 import FlexBox from "@component/FlexBox";
+import { t } from "@utils/utils";
 // STYLED COMPONENTS
 import { StyledGrid } from "../styles";
 import { DashboardNavigationWrapper, StyledDashboardNav } from "../styles";
@@ -11,7 +12,7 @@ import { DashboardNavigationWrapper, StyledDashboardNav } from "../styles";
 import { NAVIGATION_LINKS } from "./navigation";
 
 export default function VendorDashboardLayout({ children }: PropsWithChildren) {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
 
   return (
     <Grid container spacing={6}>
@@ -21,7 +22,7 @@ export default function VendorDashboardLayout({ children }: PropsWithChildren) {
             <StyledDashboardNav href={href} key={title} isActive={pathname.includes(href)}>
               <FlexBox alignItems="center" style={{ gap: 8 }}>
                 <Icon size={18} className="icon" />
-                <span>{title}</span>
+                <span>{t(title)}</span>
               </FlexBox>
 
               <span>{count}</span>

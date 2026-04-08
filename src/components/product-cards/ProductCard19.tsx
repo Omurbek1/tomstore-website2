@@ -14,7 +14,7 @@ import { IconButton } from "@component/buttons";
 import { H4, Paragraph, Small } from "@component/Typography";
 import ProductQuickView from "@component/products/ProductQuickView";
 import useCart from "@hook/useCart";
-import { currency } from "@utils/utils";
+import { currency, t } from "@utils/utils";
 
 // styled components
 const CardBox = styled(Box)(({ theme }) => ({
@@ -134,7 +134,7 @@ export default function ProductCard19({
           </FlexBox>
 
           <Button fullWidth color="dark" variant="outlined" onClick={handleAddToCart}>
-            Add To Cart
+            {t("Add To Cart")}
           </Button>
         </Box>
       </CardBox>

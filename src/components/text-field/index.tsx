@@ -12,7 +12,7 @@ export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement>, S
   id?: string;
   label?: string;
   color?: string;
-  errorText?: string;
+  errorText?: string | boolean;
   fullWidth?: boolean;
   labelColor?: colorOptions;
   endAdornment?: JSX.Element;

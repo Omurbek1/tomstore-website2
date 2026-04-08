@@ -10,6 +10,7 @@ import { H2, Span } from "@component/Typography";
 import useWindowSize from "@hook/useWindowSize";
 import Sidenav from "@component/sidenav/Sidenav";
 import DashboardNavigation from "./layout/DashboardNavigation";
+import { t } from "@utils/utils";
 
 // ==============================================================
 interface DashboardPageHeaderProps {
@@ -41,7 +42,7 @@ export default function DashboardPageHeader({ Icon, title, button }: DashboardPa
 
           {title && (
             <H2 ml="12px" my="0px" lineHeight="1" textStyle={{ whiteSpace: "pre" }}>
-              {title}
+              {t(title)}
             </H2>
           )}
         </FlexBox>

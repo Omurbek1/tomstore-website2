@@ -9,6 +9,7 @@ import NextImage from "@component/NextImage";
 import { SemiSpan } from "@component/Typography";
 import { StyledMegaMenu1 } from "./styles";
 import { MegaMenu1Props } from "./type";
+import { t } from "@utils/utils";
 
 export default function MegaMenu1({
   data: { categories, rightImage, bottomImage },
@@ -26,15 +27,15 @@ export default function MegaMenu1({
                 <Grid item md={3} key={ind}>
                   {item.href ? (
                     <NavLink className="title-link" href={item.href}>
-                      {item.title}
+                      {t(item.title)}
                     </NavLink>
                   ) : (
-                    <SemiSpan className="title-link">{item.title}</SemiSpan>
+                    <SemiSpan className="title-link">{t(item.title)}</SemiSpan>
                   )}
 
                   {item.subCategories?.map((sub, ind) => (
                     <NavLink key={ind} className="child-link" href={sub.href}>
-                      {sub.title}
+                      {t(sub.title)}
                     </NavLink>
                   ))}
                 </Grid>

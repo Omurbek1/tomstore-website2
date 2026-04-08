@@ -8,10 +8,10 @@ import Typography from "@component/Typography";
 interface SelectProps extends Omit<Props, "theme">, SpaceProps {
   label?: string;
   isMulti?: boolean;
-  errorText?: string;
+  errorText?: string | boolean;
 }
 
-const styles = (errorText: string) =>
+const styles = (errorText?: string | boolean) =>
   ({
     control: (base, state) => ({
       ...base,

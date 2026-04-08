@@ -8,6 +8,8 @@ import Icon from "@component/icon/Icon";
 import FlexBox from "@component/FlexBox";
 import Typography from "@component/Typography";
 import useWindowSize from "@hook/useWindowSize";
+import { useStorefrontPreferences } from "@context/StorefrontContext";
+import { t } from "@utils/utils";
 
 type Status = "packaging" | "shipping" | "delivering" | "complete";
 
@@ -17,9 +19,11 @@ const orderStatusList = ["packaging", "shipping", "delivering", "complete"];
 
 export default function OrderStatus() {
   const width = useWindowSize();
+  const { locale } = useStorefrontPreferences();
 
   const breakpoint = 350;
   const statusIndex = orderStatusList.indexOf(orderStatus);
+  const deliveryDate = locale === "ru" ? "4 октября" : "4th October";
 
   return (
     <Card p="2rem 1.5rem" mb="30px" borderRadius={12}>
@@ -71,7 +75,7 @@ export default function OrderStatus() {
           textAlign="center"
           borderRadius="300px"
           color="primary.main">
-          Estimated Delivery Date <b>4th October</b>
+          {t("Estimated Delivery Date")} <b>{deliveryDate}</b>
         </Typography>
       </FlexBox>
     </Card>

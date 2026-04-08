@@ -12,6 +12,7 @@ import TableRow from "@component/TableRow";
 import { IconButton } from "@component/buttons";
 import Typography, { H5, Small } from "@component/Typography";
 import { currency } from "@utils/utils";
+import { t } from "@utils/utils";
 import Order from "@models/order.model";
 
 const STATUS_COLORS = {
@@ -42,7 +43,7 @@ export default function OrderRow({ order }: OrderRowProps) {
 
         <Box m="6px">
           <Chip p="0.25rem 1rem" bg={`${getColor}.light`}>
-            <Small color={`${getColor}.main`}>{order.status}</Small>
+            <Small color={`${getColor}.main`}>{t(order.status)}</Small>
           </Chip>
         </Box>
 

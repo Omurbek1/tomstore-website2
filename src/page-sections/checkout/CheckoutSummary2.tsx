@@ -1,12 +1,13 @@
 import Divider from "@component/Divider";
 import FlexBox from "@component/FlexBox";
 import Typography, { Span } from "@component/Typography";
+import { currency, t } from "@utils/utils";
 
 export default function CheckoutSummary2() {
   return (
     <div>
       <Typography color="secondary.900" fontWeight="700" mb="1.5rem">
-        Your order
+        {t("Your order")}
       </Typography>
 
       {cartList.map((item) => (
@@ -17,37 +18,37 @@ export default function CheckoutSummary2() {
             </Span>{" "}
             x {item.name}
           </Typography>
-          <Typography>${item.price.toFixed(2)}</Typography>
+          <Typography>{currency(item.price)}</Typography>
         </FlexBox>
       ))}
 
       <Divider bg="gray.300" mb="1.5rem" />
 
       <FlexBox justifyContent="space-between" alignItems="center" mb="0.5rem">
-        <Typography color="text.hint">Subtotal:</Typography>
-        <Typography fontWeight="700">${(2610).toFixed(2)}</Typography>
+        <Typography color="text.hint">{t("Subtotal:")}</Typography>
+        <Typography fontWeight="700">{currency(2610)}</Typography>
       </FlexBox>
 
       <FlexBox justifyContent="space-between" alignItems="center" mb="0.5rem">
-        <Typography color="text.hint">Shipping:</Typography>
+        <Typography color="text.hint">{t("Shipping:")}</Typography>
         <Typography fontWeight="700">-</Typography>
       </FlexBox>
 
       <FlexBox justifyContent="space-between" alignItems="center" mb="0.5rem">
-        <Typography color="text.hint">Tax:</Typography>
-        <Typography fontWeight="700">${(40).toFixed(2)}</Typography>
+        <Typography color="text.hint">{t("Tax:")}</Typography>
+        <Typography fontWeight="700">{currency(40)}</Typography>
       </FlexBox>
 
       <FlexBox justifyContent="space-between" alignItems="center" mb="1.5rem">
-        <Typography color="text.hint">Discount:</Typography>
+        <Typography color="text.hint">{t("Discount:")}</Typography>
         <Typography fontWeight="700">-</Typography>
       </FlexBox>
 
       <Divider bg="gray.300" mb="0.5rem" />
 
       <FlexBox fontWeight="700" justifyContent="space-between" alignItems="center" mb="0.5rem">
-        <Typography>Total:</Typography>
-        <Typography fontWeight="700">${(2610).toFixed(2)}</Typography>
+        <Typography>{t("Total:")}</Typography>
+        <Typography fontWeight="700">{currency(2610)}</Typography>
       </FlexBox>
     </div>
   );

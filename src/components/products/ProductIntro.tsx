@@ -15,6 +15,7 @@ import { Button } from "@component/buttons";
 import { H1, H2, H3, H6, SemiSpan } from "@component/Typography";
 import useCart from "@hook/useCart";
 import { currency } from "@utils/utils";
+import { t } from "@utils/utils";
 
 // ========================================
 interface Props {
@@ -30,7 +31,7 @@ export default function ProductIntro({ images, title, price, id }: Props) {
   const { state, dispatch } = useCart();
   const [selectedImage, setSelectedImage] = useState(0);
 
-  const routerId = param.slug as string;
+  const routerId = String(param?.slug ?? "");
   const cartItem = state.cart.find((item) => item.id === id || item.id === routerId);
 
   const handleImageClick = useCallback((ind: number) => () => setSelectedImage(ind), []);
@@ -93,12 +94,12 @@ export default function ProductIntro({ images, title, price, id }: Props) {
           <H1 mb="1rem">{title}</H1>
 
           <FlexBox alignItems="center" mb="1rem">
-            <SemiSpan>Brand:</SemiSpan>
+            <SemiSpan>{t("Brand:")}</SemiSpan>
             <H6 ml="8px">Ziaomi</H6>
           </FlexBox>
 
           <FlexBox alignItems="center" mb="1rem">
-            <SemiSpan>Rated:</SemiSpan>
+            <SemiSpan>{t("Rated:")}</SemiSpan>
             <Box ml="8px" mr="8px">
               <Rating color="warn" value={4} outof={5} />
             </Box>
@@ -110,7 +111,7 @@ export default function ProductIntro({ images, title, price, id }: Props) {
               {currency(price)}
             </H2>
 
-            <SemiSpan color="inherit">Stock Available</SemiSpan>
+            <SemiSpan color="inherit">{t("Stock Available")}</SemiSpan>
           </Box>
 
           {!cartItem?.qty ? (
@@ -120,7 +121,7 @@ export default function ProductIntro({ images, title, price, id }: Props) {
               color="primary"
               variant="contained"
               onClick={handleCartAmountChange(1)}>
-              Add to Cart
+              {t("Add to Cart")}
             </Button>
           ) : (
             <FlexBox alignItems="center" mb="36px">
@@ -149,7 +150,7 @@ export default function ProductIntro({ images, title, price, id }: Props) {
           )}
 
           <FlexBox alignItems="center" mb="1rem">
-            <SemiSpan>Sold By:</SemiSpan>
+            <SemiSpan>{t("Sold By:")}</SemiSpan>
             <Link href="/shops/scarlett-beauty">
               <H6 lineHeight="1" ml="8px">
                 Mobile Store

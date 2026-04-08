@@ -1,10 +1,11 @@
 import Box from "@component/Box";
 import SearchResult from "./SearchResult";
+import { t } from "@utils/utils";
 
 export default function ProductSearchResult() {
   return (
     <Box pt="20px">
-      <SearchResult sortOptions={sortOptions} />
+      <SearchResult sortOptions={sortOptions.map((item) => ({ ...item, label: t(item.label) }))} />
     </Box>
   );
 }

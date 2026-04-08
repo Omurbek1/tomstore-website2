@@ -9,6 +9,7 @@ import NextImage from "@component/NextImage";
 import Typography, { H3, SemiSpan, Small } from "@component/Typography";
 import { StyledMegaMenu1 } from "./styles";
 import { MegaMenu3Props } from "./type";
+import { t } from "@utils/utils";
 
 import bagImage from "../../../../public/assets/images/products/paper-bag.png";
 
@@ -28,14 +29,14 @@ export default function MegaMenu3({
                 <Grid item md={3} key={ind}>
                   {item.href ? (
                     <NavLink className="title-link" href={item.href}>
-                      {item.title}
+                      {t(item.title)}
                     </NavLink>
                   ) : (
-                    <SemiSpan className="title-link">{item.title}</SemiSpan>
+                    <SemiSpan className="title-link">{t(item.title)}</SemiSpan>
                   )}
                   {item.subCategories?.map((sub, ind) => (
                     <NavLink key={ind} className="child-link" href={sub.href}>
-                      {sub.title}
+                      {t(sub.title)}
                     </NavLink>
                   ))}
                 </Grid>
@@ -61,14 +62,14 @@ export default function MegaMenu3({
             alignItems="center">
             <Grid item sm={6} xs={12}>
               <Box px="1.25rem">
-                <H3 mb="0.5rem">Big Sale Upto 60% Off</H3>
+                <H3 mb="0.5rem">{t("Big Sale Upto 60% Off")}</H3>
 
                 <Typography color="text.muted" mb="0.5rem">
-                  Handcrafted from genuine Italian Leather
+                  {t("Handcrafted from genuine Italian Leather")}
                 </Typography>
 
                 <Small fontWeight="700" borderBottom="2px solid" borderColor="primary.main">
-                  SHOP NOW
+                  {t("SHOP NOW")}
                 </Small>
               </Box>
             </Grid>

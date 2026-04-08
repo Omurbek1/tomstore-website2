@@ -6,10 +6,11 @@ import { Button } from "@component/buttons";
 import DashboardPageHeader from "@component/DashboardPageHeader";
 import OrderDetails from "@sections/vendor-dashboard/orders/OrderDetails";
 import { IDParams } from "interfaces";
+import { t } from "@utils/utils";
 
 const BACK_BUTTON = (
   <Link href="/vendor/orders">
-    <Button color="primary">Back</Button>
+    <Button color="primary">{t("Back")}</Button>
   </Link>
 );
 
@@ -18,7 +19,7 @@ export default async function OrderDetailsPage({ params }: IDParams) {
     <Fragment>
       <DashboardPageHeader
         button={BACK_BUTTON}
-        title="Order Details"
+        title={t("Order Details")}
         Icon={<IconShoppingBagCheck size={27} />}
       />
 

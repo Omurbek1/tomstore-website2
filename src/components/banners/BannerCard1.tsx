@@ -7,6 +7,7 @@ import Divider from "@component/Divider";
 import { H2, Paragraph, Span } from "@component/Typography";
 // UTILS
 import { isValidProp } from "@utils/utils";
+import { t } from "@utils/utils";
 
 // STYLED COMPONENTS
 const CardWrapper = styled("div")({
@@ -80,7 +81,7 @@ export default function BannerCard1({
         <Divider height={2} my="1rem" width={50} />
 
         <Link href={url}>
-          <CardLink>Shop Now</CardLink>
+          <CardLink>{t("Shop Now")}</CardLink>
         </Link>
       </CardContent>
     </CardWrapper>

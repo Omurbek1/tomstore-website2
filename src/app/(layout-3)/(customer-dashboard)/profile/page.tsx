@@ -14,6 +14,7 @@ import TableRow from "@component/TableRow";
 import { Button } from "@component/buttons";
 import Typography, { H3, H5, Small } from "@component/Typography";
 import DashboardPageHeader from "@component/DashboardPageHeader";
+import { t } from "@utils/utils";
 
 const infoList = [
   { title: "16", subtitle: "All Orders" },
@@ -24,7 +25,7 @@ const infoList = [
 
 const HEADER_LINK = (
   <Link href="/profile/edit">
-    <Button color="primary">Edit Profile</Button>
+    <Button color="primary">{t("Edit Profile")}</Button>
   </Link>
 );
 
@@ -34,7 +35,7 @@ export default async function Profile() {
   return (
     <Fragment>
       <DashboardPageHeader
-        title="My Profile"
+        title={t("My Profile")}
         button={HEADER_LINK}
         Icon={<IconUserFilled size={27} />}
       />
@@ -62,7 +63,7 @@ export default async function Profile() {
 
                     <FlexBox alignItems="center">
                       <Typography fontSize="14px" color="text.hint">
-                        Balance:
+                        {t("Balance:")}
                       </Typography>
 
                       <Typography ml="4px" fontSize="14px" color="primary.main">
@@ -72,7 +73,7 @@ export default async function Profile() {
                   </div>
 
                   <Typography fontSize="14px" color="text.hint" letterSpacing="0.2em">
-                    SILVER USER
+                    {t("SILVER USER")}
                   </Typography>
                 </FlexBox>
               </Box>
@@ -101,7 +102,7 @@ export default async function Profile() {
                     </H3>
 
                     <Small color="text.muted" textAlign="center">
-                      {item.subtitle}
+                      {t(item.subtitle)}
                     </Small>
                   </Card>
                 </Grid>
@@ -119,7 +120,7 @@ export default async function Profile() {
         borderColor="gray.200">
         <FlexBox flexDirection="column" p="0.5rem">
           <Small color="text.muted" mb="4px">
-            First Name
+            {t("First Name")}
           </Small>
 
           <span>{user.name.firstName}</span>
@@ -127,7 +128,7 @@ export default async function Profile() {
 
         <FlexBox flexDirection="column" p="0.5rem">
           <Small color="text.muted" mb="4px">
-            Last Name
+            {t("Last Name")}
           </Small>
 
           <span>{user.name.lastName}</span>
@@ -135,7 +136,7 @@ export default async function Profile() {
 
         <FlexBox flexDirection="column" p="0.5rem">
           <Small color="text.muted" mb="4px">
-            Email
+            {t("Email")}
           </Small>
 
           <span>{user.email}</span>
@@ -143,7 +144,7 @@ export default async function Profile() {
 
         <FlexBox flexDirection="column" p="0.5rem">
           <Small color="text.muted" mb="4px" textAlign="left">
-            Phone
+            {t("Phone")}
           </Small>
 
           <span>{user.phone}</span>
@@ -151,7 +152,7 @@ export default async function Profile() {
 
         <FlexBox flexDirection="column" p="0.5rem">
           <Small color="text.muted" mb="4px">
-            Birth date
+            {t("Birth date")}
           </Small>
 
           <span className="pre">{format(new Date(user.dateOfBirth), "dd MMM, yyyy")}</span>

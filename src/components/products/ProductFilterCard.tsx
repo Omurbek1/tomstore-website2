@@ -9,6 +9,7 @@ import CheckBox from "@component/CheckBox";
 import TextField from "@component/text-field";
 import { Accordion, AccordionHeader } from "@component/accordion";
 import { H5, H6, Paragraph, SemiSpan } from "@component/Typography";
+import { t } from "@utils/utils";
 
 const CATEGORIES = [
   { title: "Bath Preparations", child: ["Bubble Bath", "Bath Capsules", "Others"] },
@@ -31,20 +32,20 @@ export default function ProductFilterCard() {
         fontSize="14px"
         color="text.muted"
         className="cursor-pointer">
-        {name}
+        {t(name)}
       </Paragraph>
     ));
 
   return (
     <Card p="18px 27px" elevation={5} borderRadius={12}>
-      <H6 mb="10px">Categories</H6>
+      <H6 mb="10px">{t("Categories")}</H6>
 
       {CATEGORIES.map((item) =>
         item.child ? (
           <Accordion key={item.title} expanded>
             <AccordionHeader px="0px" py="6px" color="text.muted">
               <SemiSpan className="cursor-pointer" mr="9px">
-                {item.title}
+                {t(item.title)}
               </SemiSpan>
             </AccordionHeader>
 
@@ -57,7 +58,7 @@ export default function ProductFilterCard() {
             key={item.title}
             color="text.muted"
             className="cursor-pointer">
-            {item.title}
+            {t(item.title)}
           </Paragraph>
         )
       )}
@@ -65,7 +66,7 @@ export default function ProductFilterCard() {
       <Divider mt="18px" mb="24px" />
 
       {/* PRICE RANGE FILTER */}
-      <H6 mb="16px">Price Range</H6>
+      <H6 mb="16px">{t("Price Range")}</H6>
       <FlexBox justifyContent="space-between" alignItems="center">
         <TextField placeholder="0" type="number" fullWidth />
 
@@ -79,7 +80,7 @@ export default function ProductFilterCard() {
       <Divider my="24px" />
 
       {/* BRANDS FILTER */}
-      <H6 mb="16px">Brands</H6>
+      <H6 mb="16px">{t("Brands")}</H6>
       {BRANDS.map((item) => (
         <CheckBox
           my="10px"
@@ -87,7 +88,7 @@ export default function ProductFilterCard() {
           name={item}
           value={item}
           color="secondary"
-          label={<SemiSpan color="inherit">{item}</SemiSpan>}
+          label={<SemiSpan color="inherit">{t(item)}</SemiSpan>}
           onChange={(e) => console.log(e.target.value, e.target.checked)}
         />
       ))}
@@ -102,7 +103,7 @@ export default function ProductFilterCard() {
           name={item}
           value={item}
           color="secondary"
-          label={<SemiSpan color="inherit">{item}</SemiSpan>}
+          label={<SemiSpan color="inherit">{t(item)}</SemiSpan>}
           onChange={(e) => console.log(e.target.value, e.target.checked)}
         />
       ))}
@@ -110,7 +111,7 @@ export default function ProductFilterCard() {
       <Divider my="24px" />
 
       {/* RATING FILTER */}
-      <H6 mb="16px">Ratings</H6>
+      <H6 mb="16px">{t("Ratings")}</H6>
       {[5, 4, 3, 2, 1].map((item) => (
         <CheckBox
           my="10px"
@@ -125,7 +126,7 @@ export default function ProductFilterCard() {
       <Divider my="24px" />
 
       {/* COLORS FILTER */}
-      <H6 mb="16px">Colors</H6>
+      <H6 mb="16px">{t("Colors")}</H6>
       <FlexBox mb="1rem">
         {COLORS.map((item, ind) => (
           <Avatar key={ind} bg={item} size={25} mr="10px" style={{ cursor: "pointer" }} />

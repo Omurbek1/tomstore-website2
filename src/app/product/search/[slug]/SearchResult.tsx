@@ -18,6 +18,7 @@ import ProductListView from "@component/products/ProductCard9List";
 import ProductFilterCard from "@component/products/ProductFilterCard";
 import useWindowSize from "@hook/useWindowSize";
 import db from "@data/db";
+import { t } from "@utils/utils";
 
 // ==============================================================
 interface Props {
@@ -50,21 +51,23 @@ export default function SearchResult({ sortOptions }: Props) {
         alignItems="center"
         justifyContent="space-between">
         <div>
-          <H5>Searching for “ mobile phone ”</H5>
-          <Paragraph color="text.muted">48 results found</Paragraph>
+          <H5>{t("Searching for “{query}”", { query: "mobile phone" })}</H5>
+          <Paragraph color="text.muted">
+            48 {t("results found")}
+          </Paragraph>
         </div>
 
         <FlexBox alignItems="center" flexWrap="wrap">
           <Paragraph color="text.muted" mr="1rem">
-            Short by:
+            {t("Short by:")}
           </Paragraph>
 
           <Box flex="1 1 0" mr="1.75rem" minWidth="150px">
-            <Select placeholder="Short by" defaultValue={sortOptions[0]} options={sortOptions} />
+            <Select placeholder={t("Short by")} defaultValue={sortOptions[0]} options={sortOptions} />
           </Box>
 
           <Paragraph color="text.muted" mr="0.5rem">
-            View:
+            {t("View:")}
           </Paragraph>
 
           <IconButton onClick={toggleView("grid")}>

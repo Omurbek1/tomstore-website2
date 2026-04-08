@@ -15,6 +15,7 @@ import { H3, H5, H6, SemiSpan } from "@component/Typography";
 
 import Divide from "./components/Divide";
 import SocialLinks from "./components/SocialLinks";
+import { t } from "@utils/utils";
 // STYLED COMPONENT
 import { StyledRoot } from "./styles";
 
@@ -25,29 +26,33 @@ const initialValues = {
   re_password: "",
   agreement: false
 };
-
-const formSchema = yup.object().shape({
-  name: yup.string().required("${path} is required"),
-  email: yup.string().email("invalid email").required("${path} is required"),
-  password: yup.string().required("${path} is required"),
-  re_password: yup
-    .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match")
-    .required("Please re-type password"),
-  agreement: yup
-    .bool()
-    .test(
-      "agreement",
-      "You have to agree with our Terms and Conditions!",
-      (value) => value === true
-    )
-    .required("You have to agree with our Terms and Conditions!")
-});
-
-type FormValues = yup.InferType<typeof formSchema>;
+type FormValues = {
+  name: string;
+  email: string;
+  password: string;
+  re_password: string;
+  agreement: boolean;
+};
 
 export default function Signup() {
   const { passwordVisibility, togglePasswordVisibility } = useVisibility();
+  const formSchema = yup.object().shape({
+    name: yup.string().required(t("Name is required")),
+    email: yup.string().email(t("invalid email")).required(t("Email is required")),
+    password: yup.string().required(t("Password is required")),
+    re_password: yup
+      .string()
+      .oneOf([yup.ref("password")], t("Passwords must match"))
+      .required(t("Please re-type password")),
+    agreement: yup
+      .bool()
+      .test(
+        "agreement",
+        t("You have to agree with our Terms and Conditions!"),
+        (value) => value === true
+      )
+      .required(t("You have to agree with our Terms and Conditions!"))
+  });
 
   const handleFormSubmit = async (values: FormValues) => {
     console.log(values);
@@ -63,18 +68,18 @@ export default function Signup() {
     <StyledRoot mx="auto" my="2rem" boxShadow="large" borderRadius={8}>
       <form className="content" onSubmit={handleSubmit}>
         <H3 textAlign="center" mb="0.5rem">
-          Create Your Account
+          {t("Create Your Account")}
         </H3>
 
         <H5 fontWeight="600" fontSize="12px" color="gray.800" textAlign="center" mb="2.25rem">
-          Please fill all forms to continued
+          {t("Please fill all forms to continued")}
         </H5>
 
         <TextField
           fullWidth
           name="name"
           mb="0.75rem"
-          label="Full Name"
+          label={t("Full Name")}
           onBlur={handleBlur}
           value={values.name}
           onChange={handleChange}
@@ -91,7 +96,7 @@ export default function Signup() {
           value={values.email}
           onChange={handleChange}
           placeholder="exmple@mail.com"
-          label="Email or Phone Number"
+          label={t("Email or Phone Number")}
           errorText={touched.email && errors.email}
         />
 
@@ -99,7 +104,7 @@ export default function Signup() {
           fullWidth
           mb="0.75rem"
           name="password"
-          label="Password"
+          label={t("Password")}
           placeholder="*********"
           onBlur={handleBlur}
           value={values.password}
@@ -124,7 +129,7 @@ export default function Signup() {
           fullWidth
           name="re_password"
           placeholder="*********"
-          label="Confirm Password"
+          label={t("Confirm Password")}
           onBlur={handleBlur}
           onChange={handleChange}
           value={values.re_password}
@@ -153,10 +158,10 @@ export default function Signup() {
           checked={values.agreement}
           label={
             <FlexBox>
-              <SemiSpan>By signing up, you agree to</SemiSpan>
+              <SemiSpan>{t("By signing up, you agree to")}</SemiSpan>
               <a href="/" target="_blank" rel="noreferrer noopener">
                 <H6 ml="0.5rem" borderBottom="1px solid" borderColor="gray.900">
-                  Terms & Condition
+                  {t("Terms & Condition")}
                 </H6>
               </a>
             </FlexBox>
@@ -164,7 +169,7 @@ export default function Signup() {
         />
 
         <Button mb="1.65rem" variant="contained" color="primary" type="submit" fullWidth>
-          Create Account
+          {t("Create Account")}
         </Button>
 
         <Divide />
@@ -173,10 +178,10 @@ export default function Signup() {
       </form>
 
       <FlexBox justifyContent="center" bg="gray.200" py="19px">
-        <SemiSpan>Already have account?</SemiSpan>
+        <SemiSpan>{t("Already have account?")}</SemiSpan>
         <Link href="/login">
           <H6 ml="0.5rem" borderBottom="1px solid" borderColor="gray.900">
-            Log in
+            {t("Login")}
           </H6>
         </Link>
       </FlexBox>

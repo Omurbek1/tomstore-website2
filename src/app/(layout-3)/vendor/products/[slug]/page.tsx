@@ -9,16 +9,12 @@ import DashboardPageHeader from "@component/DashboardPageHeader";
 import { ProductForm } from "@sections/vendor-dashboard/products";
 // CUSTOM DATA MODEL
 import { SlugParams } from "interfaces";
-
-const CATEGORIES = [
-  { label: "Fashion", value: "fashion" },
-  { label: "Gadget", value: "gadget" }
-];
+import { t } from "@utils/utils";
 
 const BACK_BUTTON = (
   <Link href="/vendor/products">
     <Button color="primary" bg="primary.light" px="2rem">
-      Back
+      {t("Back")}
     </Button>
   </Link>
 );
@@ -26,16 +22,20 @@ const BACK_BUTTON = (
 export default async function ProductDetails({ params }: SlugParams) {
   const { slug } = await params;
   const { data } = await axios.get("/api/products/slug", { params: { slug } });
+  const categories = [
+    { label: t("Fashion"), value: "fashion" },
+    { label: t("Gadget"), value: "gadget" }
+  ];
 
   return (
     <Fragment>
       <DashboardPageHeader
-        title="Edit Product"
+        title={t("Edit Product")}
         Icon={<IconPackage size={24} />}
         button={BACK_BUTTON}
       />
 
-      <ProductForm product={data} categories={CATEGORIES} />
+      <ProductForm product={data} categories={categories} />
     </Fragment>
   );
 }

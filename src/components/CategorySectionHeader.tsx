@@ -6,6 +6,7 @@ import { IconChevronRight } from "@tabler/icons-react";
 import Icon from "./icon/Icon";
 import FlexBox from "./FlexBox";
 import { H2, SemiSpan } from "./Typography";
+import { t } from "@utils/utils";
 
 // ==============================================================
 interface Props {
@@ -33,7 +34,7 @@ export default function CategorySectionHeader({ title, iconName, seeMoreLink }: 
       {seeMoreLink && (
         <Link href={seeMoreLink}>
           <FlexBox alignItems="center" ml="0.5rem" color="text.muted">
-            <SemiSpan mr="0.5rem">View all</SemiSpan>
+            <SemiSpan mr="0.5rem">{t("View all")}</SemiSpan>
             <IconChevronRight size={16} stroke={1.5} />
           </FlexBox>
         </Link>

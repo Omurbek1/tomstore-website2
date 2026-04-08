@@ -11,13 +11,13 @@ interface Product {
   thumbnail: string;
   id: string;
   shop?: Shop;
-  brand?: string;
-  size?: string[];
-  status?: string;
-  colors?: string[];
-  images?: string[];
-  categories: any[];
-  reviews?: Review[];
+  brand?: string | null;
+  size?: string[] | null;
+  status?: string | null;
+  colors?: string[] | null;
+  images?: string[] | null;
+  categories: any[] | null;
+  reviews?: Review[] | null;
   published?: boolean;
 }
 

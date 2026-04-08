@@ -16,6 +16,7 @@ import TextField from "@component/text-field";
 import DashboardPageHeader from "@component/DashboardPageHeader";
 // CUSTOM DATA
 import countryList from "@data/countryList";
+import { t } from "@utils/utils";
 
 interface FormValues {
   first_name: string;
@@ -55,7 +56,7 @@ export default function AccountSettings() {
 
   return (
     <Fragment>
-      <DashboardPageHeader title="Account" Icon={<IconSettings size={24} />} />
+      <DashboardPageHeader title={t("Account")} Icon={<IconSettings size={24} />} />
 
       <Card1 borderRadius={12}>
         <Box
@@ -135,11 +136,11 @@ export default function AccountSettings() {
                     <TextField
                       fullWidth
                       name="first_name"
-                      label="First Name"
+                      label={t("First Name")}
                       onBlur={handleBlur}
                       onChange={handleChange}
                       value={values.first_name}
-                      placeholder="Enter your first name"
+                      placeholder={t("Enter your first name")}
                       errorText={touched.first_name && errors.first_name}
                     />
                   </Grid>
@@ -148,11 +149,11 @@ export default function AccountSettings() {
                     <TextField
                       fullWidth
                       name="last_name"
-                      label="Last Name"
+                      label={t("Last Name")}
                       onBlur={handleBlur}
                       onChange={handleChange}
                       value={values.last_name}
-                      placeholder="Enter your last name"
+                      placeholder={t("Enter your last name")}
                       errorText={touched.last_name && errors.last_name}
                     />
                   </Grid>
@@ -162,11 +163,11 @@ export default function AccountSettings() {
                       fullWidth
                       name="email"
                       type="email"
-                      label="Email"
+                      label={t("Email")}
                       onBlur={handleBlur}
                       value={values.email}
                       onChange={handleChange}
-                      placeholder="Enter your email"
+                      placeholder={t("Enter your email")}
                       errorText={touched.email && errors.email}
                     />
                   </Grid>
@@ -175,22 +176,22 @@ export default function AccountSettings() {
                     <TextField
                       fullWidth
                       type="tel"
-                      label="Phone"
+                      label={t("Phone")}
                       name="contact"
                       onBlur={handleBlur}
                       value={values.contact}
                       onChange={handleChange}
-                      placeholder="Enter your phone number"
+                      placeholder={t("Enter your phone number")}
                       errorText={touched.contact && errors.contact}
                     />
                   </Grid>
 
                   <Grid item md={6} xs={12}>
                     <Select
-                      label="Country"
+                      label={t("Country")}
                       options={countryList}
                       value={values.country}
-                      placeholder="Select your country"
+                      placeholder={t("Select your country")}
                       errorText={touched.country && errors.country}
                       onChange={(country) => setFieldValue("country", country)}
                     />
@@ -200,18 +201,18 @@ export default function AccountSettings() {
                     <TextField
                       fullWidth
                       name="city"
-                      label="City"
+                      label={t("City")}
                       value={values.city}
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      placeholder="Enter your city"
+                      placeholder={t("Enter your city")}
                       errorText={touched.city && errors.city}
                     />
                   </Grid>
                 </Grid>
               </Box>
 
-              <Button type="submit">Save Changes</Button>
+              <Button type="submit">{t("Save Changes")}</Button>
             </form>
           )}
         </Formik>

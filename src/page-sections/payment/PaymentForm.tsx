@@ -16,6 +16,7 @@ import { Button } from "@component/buttons";
 import TextField from "@component/text-field";
 import Typography from "@component/Typography";
 import useWindowSize from "@hook/useWindowSize";
+import { t } from "@utils/utils";
 
 const initialValues = {
   card_no: "",
@@ -82,7 +83,7 @@ export default function PaymentForm() {
           checked={paymentMethod === "credit-card"}
           label={
             <Typography ml="6px" fontWeight="600" fontSize="18px">
-              Pay with credit card
+              {t("Pay with credit card")}
             </Typography>
           }
         />
@@ -102,8 +103,8 @@ export default function PaymentForm() {
                       <TextField
                         fullWidth
                         name="card_no"
-                        placeholder="Card Number"
-                        label="Card Number"
+                        placeholder={t("Card Number")}
+                        label={t("Card Number")}
                         onBlur={handleBlur}
                         value={values.card_no}
                         onChange={handleChange}
@@ -116,7 +117,7 @@ export default function PaymentForm() {
                         fullWidth
                         name="exp_date"
                         placeholder="MM/YY"
-                        label="Exp Date"
+                        label={t("Exp Date")}
                         onBlur={handleBlur}
                         onChange={handleChange}
                         value={values.exp_date}
@@ -128,10 +129,10 @@ export default function PaymentForm() {
                       <TextField
                         fullWidth
                         name="name"
-                        placeholder="Name on Card"
+                        placeholder={t("Name on Card")}
                         onBlur={handleBlur}
                         value={values.name}
-                        label="Name on Card"
+                        label={t("Name on Card")}
                         onChange={handleChange}
                         errorText={touched.name && errors.name}
                       />
@@ -141,10 +142,10 @@ export default function PaymentForm() {
                       <TextField
                         fullWidth
                         name="name"
-                        placeholder="CVC"
+                        placeholder={t("CVC")}
                         onBlur={handleBlur}
                         value={values.name}
-                        label="Name on Card"
+                        label={t("CVC")}
                         onChange={handleChange}
                         errorText={touched.name && errors.name}
                       />
@@ -153,7 +154,7 @@ export default function PaymentForm() {
                 </Box>
 
                 <Button variant="outlined" color="primary" mb="30px">
-                  Submit
+                  {t("Submit")}
                 </Button>
 
                 <Divider mb="1.5rem" mx="-2rem" />
@@ -170,7 +171,7 @@ export default function PaymentForm() {
           checked={paymentMethod === "paypal"}
           label={
             <Typography ml="6px" fontWeight="600" fontSize="18px">
-              Pay with Paypal
+              {t("Pay with Paypal")}
             </Typography>
           }
         />
@@ -183,11 +184,11 @@ export default function PaymentForm() {
                 fullWidth
                 name="email"
                 type="email"
-                label="Paypal Email"
+                label={t("Paypal Email")}
                 mr={isMobile ? "1rem" : "30px"}
               />
               <Button variant="outlined" color="primary" type="button">
-                Submit
+                {t("Submit")}
               </Button>
             </FlexBox>
 
@@ -202,7 +203,7 @@ export default function PaymentForm() {
           onChange={handlePaymentMethodChange}
           label={
             <Typography ml="6px" fontWeight="600" fontSize="18px">
-              Cash On Delivery
+              {t("Cash On Delivery")}
             </Typography>
           }
         />
@@ -212,7 +213,7 @@ export default function PaymentForm() {
         <Grid item sm={6} xs={12}>
           <Link href="/checkout">
             <Button variant="outlined" color="primary" type="button" fullWidth>
-              Back to checkout details
+              {t("Back to checkout details")}
             </Button>
           </Link>
         </Grid>
@@ -220,7 +221,7 @@ export default function PaymentForm() {
         <Grid item sm={6} xs={12}>
           <Link href="/orders">
             <Button variant="contained" color="primary" type="submit" fullWidth>
-              Review
+              {t("Review")}
             </Button>
           </Link>
         </Grid>

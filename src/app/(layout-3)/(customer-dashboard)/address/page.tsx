@@ -8,10 +8,11 @@ import { Button } from "@component/buttons";
 import DashboardPageHeader from "@component/DashboardPageHeader";
 // PAGE SECTION COMPONENTS
 import { AddressItem, AddressPagination } from "@sections/customer-dashboard/address";
+import { t } from "@utils/utils";
 
 const HEADER_LINK = (
   <Link href="/address/create">
-    <Button color="primary">Add New Address</Button>
+    <Button color="primary">{t("Add New Address")}</Button>
   </Link>
 );
 
@@ -21,7 +22,7 @@ export default async function AddressList() {
   return (
     <Fragment>
       <DashboardPageHeader
-        title="My Addresses"
+        title={t("My Addresses")}
         button={HEADER_LINK}
         Icon={<IconMapPin size={27} />}
       />

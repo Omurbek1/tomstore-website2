@@ -2,6 +2,7 @@ import Box from "./Box";
 import Icon from "./icon/Icon";
 import FlexBox from "./FlexBox";
 import Typography from "./Typography";
+import { t } from "@utils/utils";
 
 export default function AppStore() {
   return (
@@ -23,11 +24,11 @@ export default function AppStore() {
 
             <Box ml="8px">
               <Typography fontSize="8px" fontWeight="600" lineHeight="1">
-                {item.subtitle}
+                {t(item.subtitle)}
               </Typography>
 
               <Typography fontSize="14px" fontWeight="900">
-                {item.title}
+                {t(item.title)}
               </Typography>
             </Box>
           </Box>

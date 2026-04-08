@@ -13,18 +13,19 @@ import {
 
 import FlexBox from "@component/FlexBox";
 import Typography from "@component/Typography";
+import { t } from "@utils/utils";
 // STYLED COMPONENTS
 import { DashboardNavigationWrapper, StyledDashboardNav } from "./styles";
 
 export default function DashboardNavigation() {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
 
   return (
     <DashboardNavigationWrapper px="0px" pb="1.5rem" color="gray.900" borderRadius={8}>
       {NAVIGATION_LINKS.map((navGroup) => (
         <Fragment key={navGroup.title}>
           <Typography p="26px 30px 1rem" color="text.muted" fontSize="12px">
-            {navGroup.title}
+            {t(navGroup.title)}
           </Typography>
 
           {navGroup.links.map(({ Icon, count, href, title }) => (
@@ -32,7 +33,7 @@ export default function DashboardNavigation() {
               <FlexBox alignItems="center" style={{ gap: 8 }}>
                 <Icon size={20} className="icon" />
 
-                <span>{title}</span>
+                <span>{t(title)}</span>
               </FlexBox>
 
               <span>{count}</span>

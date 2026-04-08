@@ -9,6 +9,7 @@ import { H5 } from "@component/Typography";
 import DashboardPageHeader from "@component/DashboardPageHeader";
 // PAGE SECTION COMPONENTS
 import { ProductList } from "@sections/vendor-dashboard/products";
+import { t } from "@utils/utils";
 
 // ==============================================================
 type Params = { searchParams: Promise<{ page: string }> };
@@ -26,22 +27,22 @@ export default async function Products({ searchParams }: Params) {
 
   return (
     <Fragment>
-      <DashboardPageHeader title="Products" Icon={<IconPackage size={24} />} />
+      <DashboardPageHeader title={t("Products")} Icon={<IconPackage size={24} />} />
 
       <Hidden down={769}>
         <TableRow padding="0px 18px" mb="-0.125rem" boxShadow="none" backgroundColor="transparent">
           <FlexBox my="0px" mx="6px" flex="2 2 220px !important">
             <H5 fontWeight={500} ml="56px" color="text.muted" textAlign="left">
-              Name
+              {t("Name")}
             </H5>
           </FlexBox>
 
           <H5 fontWeight={500} color="text.muted" my="0px" mx="6px" textAlign="left">
-            Regular price
+            {t("Regular price")}
           </H5>
 
           <H5 fontWeight={500} color="text.muted" my="0px" mx="6px" textAlign="left">
-            Sale Price
+            {t("Sale Price")}
           </H5>
 
           <H5 flex="0 0 0 !important" fontWeight={500} color="text.muted" px="22px" my="0px" />

@@ -16,10 +16,11 @@ import DashboardPageHeader from "@component/DashboardPageHeader";
 import { MessageSubmit } from "@sections/customer-dashboard/support-ticket";
 // CUSTOM DATA MODEL
 import { SlugParams } from "interfaces";
+import { t } from "@utils/utils";
 
 const HEADER_LINK = (
   <Link href="/support-tickets">
-    <Button color="primary">Back</Button>
+    <Button color="primary">{t("Back")}</Button>
   </Link>
 );
 
@@ -31,7 +32,7 @@ export default async function TicketDetails({ params }: SlugParams) {
     <Fragment>
       <DashboardPageHeader
         button={HEADER_LINK}
-        title="Support Ticket"
+        title={t("Support Ticket")}
         Icon={<IconHelp size={27} />}
       />
 

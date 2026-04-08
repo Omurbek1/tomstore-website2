@@ -11,15 +11,16 @@ import { Button } from "@component/buttons";
 import Pagination from "@component/pagination";
 import ProductCard1 from "@component/product-cards/ProductCard1";
 import DashboardPageHeader from "@component/DashboardPageHeader";
+import { t } from "@utils/utils";
 
 export default function WishList() {
   return (
     <Fragment>
       {/* PAGE TITLE AREA */}
       <DashboardPageHeader
-        title="My Wish List"
+        title={t("My Wish List")}
         Icon={<IconHeartFilled size={27} />}
-        button={<Button color="primary">Add All to Cart</Button>}
+        button={<Button color="primary">{t("Add All to Cart")}</Button>}
       />
 
       {/* PRODUCT LIST AREA */}

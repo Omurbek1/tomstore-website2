@@ -6,6 +6,7 @@ import Container from "@component/Container";
 import ProductCard4 from "@component/product-cards/ProductCard4";
 import ProductCard5 from "@component/product-cards/ProductCard5";
 import CategorySectionHeader from "@component/CategorySectionHeader";
+import { t } from "@utils/utils";
 // API FUNCTIONS
 import api from "@utils/__api__/market-1";
 
@@ -20,7 +21,7 @@ export default async function Section4() {
       <Container>
         <Grid container spacing={6}>
           <Grid item lg={6} xs={12}>
-            <CategorySectionHeader iconName="ranking-1" title="Top Ratings" seeMoreLink="#" />
+            <CategorySectionHeader iconName="ranking-1" title={t("Top Ratings")} seeMoreLink="#" />
 
             <Card p="1rem" borderRadius={8}>
               <Grid container spacing={4}>
@@ -42,7 +43,7 @@ export default async function Section4() {
           </Grid>
 
           <Grid item md={6} xs={12}>
-            <CategorySectionHeader iconName="Group" title="Featured Brands" seeMoreLink="#" />
+            <CategorySectionHeader iconName="Group" title={t("Featured Brands")} seeMoreLink="#" />
 
             <Card p="1rem" borderRadius={8}>
               <Grid container spacing={4}>

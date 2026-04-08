@@ -4,6 +4,7 @@ import Icon from "@component/icon/Icon";
 import FlexBox from "@component/FlexBox";
 import NextImage from "@component/NextImage";
 import Typography from "@component/Typography";
+import { t } from "@utils/utils";
 
 // STYLED COMPONENT
 const StyledImage = styled(NextImage)`
@@ -34,7 +35,7 @@ export default function MobileCategoryImageBox({ icon, title, imgUrl }: Props) {
         fontSize="11px"
         lineHeight="1"
         mt="0.5rem">
-        {title}
+        {t(title)}
       </Typography>
     </FlexBox>
   );

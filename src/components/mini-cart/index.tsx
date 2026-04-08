@@ -10,6 +10,7 @@ import { Button } from "@component/buttons";
 import Typography, { H5, Paragraph, Tiny } from "@component/Typography";
 import useCart from "@hook/useCart";
 import { currency } from "@utils/utils";
+import { t } from "@utils/utils";
 // STYLED COMPONENT
 import { StyledMiniCart } from "./styles";
 
@@ -37,7 +38,7 @@ export default function MiniCart({ toggleSidenav = () => {} }: MiniCartProps) {
         <FlexBox alignItems="center" m="0px 20px" height="74px">
           <Icon size="1.5rem">bag</Icon>
           <Typography fontWeight={600} fontSize="16px" ml="0.5rem">
-            {state.cart.length} item
+            {state.cart.length} {t("item")}
           </Typography>
         </FlexBox>
 
@@ -51,7 +52,7 @@ export default function MiniCart({ toggleSidenav = () => {} }: MiniCartProps) {
             height="calc(100% - 80px)">
             <Image src="/assets/images/logos/shopping-bag.svg" width={90} height={90} alt="bonik" />
             <Paragraph mt="1rem" color="text.muted" textAlign="center" maxWidth="200px">
-              Your shopping bag is empty. Start shopping
+              {t("Your shopping bag is empty. Start shopping")}
             </Paragraph>
           </FlexBox>
         )}
@@ -130,13 +131,15 @@ export default function MiniCart({ toggleSidenav = () => {} }: MiniCartProps) {
         <div className="actions">
           <Link href="/checkout">
             <Button fullWidth color="primary" variant="contained" onClick={toggleSidenav}>
-              <Typography fontWeight={600}>Checkout Now ({currency(getTotalPrice())})</Typography>
+              <Typography fontWeight={600}>
+                {t("Checkout Now")} ({currency(getTotalPrice())})
+              </Typography>
             </Button>
           </Link>
 
           <Link href="/cart">
             <Button fullWidth color="primary" variant="outlined" mt="1rem" onClick={toggleSidenav}>
-              <Typography fontWeight={600}>View Cart</Typography>
+              <Typography fontWeight={600}>{t("View Cart")}</Typography>
             </Button>
           </Link>
         </div>

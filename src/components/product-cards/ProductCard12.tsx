@@ -14,7 +14,7 @@ import { Button } from "@component/buttons";
 import NextImage from "@component/NextImage";
 import { H3, Paragraph, Span } from "@component/Typography";
 import ProductQuickView from "@component/products/ProductQuickView";
-import { calculateDiscount, currency } from "@utils/utils";
+import { calculateDiscount, currency, t } from "@utils/utils";
 
 // STYLED COMPONENTS
 const Wrapper = styled("div")`
@@ -124,6 +124,7 @@ export default function ProductCard12({
 }: ProductCard12Props) {
   const [open, setOpen] = useState(false);
   const { state, dispatch } = useCart();
+  const discount = off ?? 0;
 
   const cartItem = state.cart.find((item) => item.id === id);
 
@@ -149,7 +150,7 @@ export default function ProductCard12({
   return (
     <Wrapper>
       <ImageWrapper>
-        {off !== 0 && (
+        {discount !== 0 && (
           <Chip
             top="10px"
             zIndex={1}
@@ -160,7 +161,7 @@ export default function ProductCard12({
             bg="primary.main"
             position="absolute"
             color="primary.text">
-            {off}% off
+            {t("{discount}% off", { discount })}
           </Chip>
         )}
 
@@ -195,12 +196,12 @@ export default function ProductCard12({
               {cartItem?.qty ? (
                 <>
                   <IconMinus size={18} />
-                  <Span ml={1}>Remove from Cart</Span>
+                  <Span ml={1}>{t("Remove from Cart")}</Span>
                 </>
               ) : (
                 <>
                   <IconPlus size={18} />
-                  <Span ml={1}>Add to Cart</Span>
+                  <Span ml={1}>{t("Add to Cart")}</Span>
                 </>
               )}
             </Button>
@@ -230,10 +231,10 @@ export default function ProductCard12({
 
         <FlexBox alignItems="center" mt={0.5}>
           <Box fontWeight="600" color="primary.main" mr={2}>
-            {calculateDiscount(price, off as number)}
+            {calculateDiscount(price, discount)}
           </Box>
 
-          {off !== 0 && (
+          {discount !== 0 && (
             <Box color="grey.600" fontWeight="600">
               <del>{currency(price)}</del>
             </Box>

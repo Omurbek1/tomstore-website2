@@ -2,6 +2,7 @@
 
 import TextArea from "@component/textarea";
 import { Button } from "@component/buttons";
+import { t } from "@utils/utils";
 
 export default function MessageSubmit() {
   const handleFormSubmit = async (values: any) => {
@@ -15,11 +16,11 @@ export default function MessageSubmit() {
         fullWidth
         mb="1.5rem"
         borderRadius={8}
-        placeholder="Write your message here..."
+        placeholder={t("Write your message here...")}
       />
 
       <Button ml="auto" color="primary" variant="contained" onClick={handleFormSubmit}>
-        Post message
+        {t("Post message")}
       </Button>
     </>
   );

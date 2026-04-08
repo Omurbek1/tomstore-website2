@@ -7,6 +7,7 @@ import Grid from "@component/grid/Grid";
 import FlexBox from "@component/FlexBox";
 import { H3, H4 } from "@component/Typography";
 import Shop from "@models/shop.model";
+import { t } from "@utils/utils";
 
 // ============================================================
 type Props = { shops: Shop[] };
@@ -15,7 +16,7 @@ type Props = { shops: Shop[] };
 export default function AvailableShops({ shops }: Props) {
   return (
     <Box mb="3.75rem">
-      <H3 mb="1.5rem">Also Available at</H3>
+      <H3 mb="1.5rem">{t("Also Available at")}</H3>
 
       <Grid container spacing={8}>
         {shops.map((item) => (

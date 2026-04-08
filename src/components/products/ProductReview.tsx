@@ -8,6 +8,7 @@ import TextArea from "@component/textarea";
 import { Button } from "@component/buttons";
 import { H2, H5 } from "@component/Typography";
 import ProductComment from "./ProductComment";
+import { t } from "@utils/utils";
 
 const validationSchema = yup.object().shape({
   rating: yup.number().required("Rating is required"),
@@ -50,14 +51,14 @@ export default function ProductReview() {
       ))}
 
       <H2 fontWeight="600" mt="55px" mb="20">
-        Write a Review for this product
+        {t("Write a Review for this product")}
       </H2>
 
       <form onSubmit={handleSubmit}>
         <Box mb="20px">
           <FlexBox mb="12px">
             <H5 color="gray.700" mr="6px">
-              Your Rating
+              {t("Your Rating")}
             </H5>
             <H5 color="error.main">*</H5>
           </FlexBox>
@@ -75,7 +76,7 @@ export default function ProductReview() {
         <Box mb="24px">
           <FlexBox mb="12px">
             <H5 color="gray.700" mr="6px">
-              Your Review
+              {t("Your Review")}
             </H5>
 
             <H5 color="error.main">*</H5>
@@ -88,7 +89,7 @@ export default function ProductReview() {
             onBlur={handleBlur}
             onChange={handleChange}
             value={values.comment || ""}
-            placeholder="Write a review here..."
+            placeholder={t("Write a review here...")}
             errorText={touched.comment && errors.comment}
           />
         </Box>
@@ -99,7 +100,7 @@ export default function ProductReview() {
           color="primary"
           variant="contained"
           disabled={!(dirty && isValid)}>
-          Submit
+          {t("Submit")}
         </Button>
       </form>
     </div>

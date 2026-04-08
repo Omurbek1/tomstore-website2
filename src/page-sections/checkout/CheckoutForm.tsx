@@ -14,6 +14,7 @@ import countryList from "@data/countryList";
 import { Button } from "@component/buttons";
 import TextField from "@component/text-field";
 import Typography from "@component/Typography";
+import { t } from "@utils/utils";
 
 const initialValues = {
   shipping_name: "",
@@ -76,7 +77,7 @@ export default function CheckoutForm() {
         <form onSubmit={handleSubmit}>
           <Card1 mb="2rem">
             <Typography fontWeight="600" mb="1rem">
-              Shipping Address
+              {t("Shipping Address")}
             </Typography>
 
             <Grid container spacing={7}>
@@ -84,9 +85,9 @@ export default function CheckoutForm() {
                 <TextField
                   fullWidth
                   mb="1rem"
-                  label="Full Name"
+                  label={t("Full Name")}
                   name="shipping_name"
-                  placeholder="Full Name"
+                  placeholder={t("Full Name")}
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.shipping_name}
@@ -96,8 +97,8 @@ export default function CheckoutForm() {
                 <TextField
                   fullWidth
                   mb="1rem"
-                  label="Phone Number"
-                  placeholder="Phone Number"
+                  label={t("Phone Number")}
+                  placeholder={t("Phone Number")}
                   onBlur={handleBlur}
                   onChange={handleChange}
                   name="shipping_contact"
@@ -109,8 +110,8 @@ export default function CheckoutForm() {
                   fullWidth
                   mb="1rem"
                   type="number"
-                  label="Zip Code"
-                  placeholder="Zip Code"
+                  label={t("Zip Code")}
+                  placeholder={t("Zip Code")}
                   onBlur={handleBlur}
                   name="shipping_zip"
                   onChange={handleChange}
@@ -120,8 +121,8 @@ export default function CheckoutForm() {
 
                 <TextField
                   fullWidth
-                  label="Address 1"
-                  placeholder="Address 1"
+                  label={t("Address 1")}
+                  placeholder={t("Address 1")}
                   onBlur={handleBlur}
                   onChange={handleChange}
                   name="shipping_address1"
@@ -135,9 +136,9 @@ export default function CheckoutForm() {
                   fullWidth
                   mb="1rem"
                   type="email"
-                  placeholder="Email Address"
+                  placeholder={t("Email Address")}
                   onBlur={handleBlur}
-                  label="Email Address"
+                  label={t("Email Address")}
                   name="shipping_email"
                   onChange={handleChange}
                   value={values.shipping_email}
@@ -147,8 +148,8 @@ export default function CheckoutForm() {
                 <TextField
                   fullWidth
                   mb="1rem"
-                  label="Company"
-                  placeholder="Company"
+                  label={t("Company")}
+                  placeholder={t("Company")}
                   onBlur={handleBlur}
                   onChange={handleChange}
                   name="shipping_company"
@@ -158,7 +159,7 @@ export default function CheckoutForm() {
 
                 <Select
                   mb="1rem"
-                  label="Country"
+                  label={t("Country")}
                   options={countryList}
                   value={values.shipping_country || "US"}
                   errorText={touched.shipping_country && errors.shipping_country}
@@ -167,8 +168,8 @@ export default function CheckoutForm() {
 
                 <TextField
                   fullWidth
-                  label="Address 2"
-                  placeholder="Address 2"
+                  label={t("Address 2")}
+                  placeholder={t("Address 2")}
                   onBlur={handleBlur}
                   onChange={handleChange}
                   name="shipping_address2"
@@ -181,12 +182,12 @@ export default function CheckoutForm() {
 
           <Card1 mb="2rem">
             <Typography fontWeight="600" mb="1rem">
-              Billing Address
+              {t("Billing Address")}
             </Typography>
 
             <CheckBox
               color="secondary"
-              label="Same as shipping address"
+              label={t("Same as shipping address")}
               mb={sameAsShipping ? "" : "1rem"}
               onChange={handleCheckboxChange(values, setFieldValue)}
             />
@@ -197,8 +198,8 @@ export default function CheckoutForm() {
                   <TextField
                     fullWidth
                     mb="1rem"
-                    label="Full Name"
-                    placeholder="Full Name"
+                    label={t("Full Name")}
+                    placeholder={t("Full Name")}
                     name="billing_name"
                     onBlur={handleBlur}
                     onChange={handleChange}
@@ -209,8 +210,8 @@ export default function CheckoutForm() {
                   <TextField
                     fullWidth
                     mb="1rem"
-                    label="Phone Number"
-                    placeholder="Phone Number"
+                    label={t("Phone Number")}
+                    placeholder={t("Phone Number")}
                     onBlur={handleBlur}
                     name="billing_contact"
                     onChange={handleChange}
@@ -222,8 +223,8 @@ export default function CheckoutForm() {
                     fullWidth
                     mb="1rem"
                     type="number"
-                    label="Zip Code"
-                    placeholder="Zip Code"
+                    label={t("Zip Code")}
+                    placeholder={t("Zip Code")}
                     name="billing_zip"
                     onBlur={handleBlur}
                     onChange={handleChange}
@@ -233,8 +234,8 @@ export default function CheckoutForm() {
 
                   <TextField
                     fullWidth
-                    label="Address 1"
-                    placeholder="Address 1"
+                    label={t("Address 1")}
+                    placeholder={t("Address 1")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     name="billing_address1"
@@ -248,10 +249,10 @@ export default function CheckoutForm() {
                     fullWidth
                     mb="1rem"
                     type="email"
-                    placeholder="Email Address"
+                    placeholder={t("Email Address")}
                     onBlur={handleBlur}
                     name="billing_email"
-                    label="Email Address"
+                    label={t("Email Address")}
                     onChange={handleChange}
                     value={values.billing_email}
                     errorText={touched.billing_email && errors.billing_email}
@@ -260,8 +261,8 @@ export default function CheckoutForm() {
                   <TextField
                     fullWidth
                     mb="1rem"
-                    label="Company"
-                    placeholder="Company"
+                    label={t("Company")}
+                    placeholder={t("Company")}
                     onBlur={handleBlur}
                     name="billing_company"
                     onChange={handleChange}
@@ -271,7 +272,7 @@ export default function CheckoutForm() {
 
                   <Select
                     mb="1rem"
-                    label="Country"
+                    label={t("Country")}
                     options={countryList}
                     value={values.billing_country || "US"}
                     errorText={touched.billing_country && errors.billing_country}
@@ -280,8 +281,8 @@ export default function CheckoutForm() {
 
                   <TextField
                     fullWidth
-                    label="Address 2"
-                    placeholder="Address 2"
+                    label={t("Address 2")}
+                    placeholder={t("Address 2")}
                     onBlur={handleBlur}
                     name="billing_address2"
                     onChange={handleChange}
@@ -297,14 +298,14 @@ export default function CheckoutForm() {
             <Grid item sm={6} xs={12}>
               <Link href="/cart">
                 <Button variant="outlined" color="primary" type="button" fullWidth>
-                  Back to Cart
+                  {t("Back to Cart")}
                 </Button>
               </Link>
             </Grid>
 
             <Grid item sm={6} xs={12}>
               <Button variant="contained" color="primary" type="submit" fullWidth>
-                Proceed to Payment
+                {t("Proceed to Payment")}
               </Button>
             </Grid>
           </Grid>

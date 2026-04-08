@@ -11,6 +11,7 @@ import { Paragraph } from "@component/Typography";
 import { StyledBox, StyledLink, Wrapper } from "./styles";
 // CUSTOM DATA
 import { customerCareLinks, iconList } from "./data";
+import { t } from "@utils/utils";
 
 export default function Footer2() {
   return (
@@ -23,9 +24,9 @@ export default function Footer2() {
         <Grid container spacing={6}>
           <Grid item md={6} sm={6} xs={12}>
             <Paragraph mb="1.25rem" color="gray.500" maxWidth="370px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor libero id et, in
-              gravida. Sit diam duis mauris nulla cursus. Erat et lectus vel ut sollicitudin elit at
-              amet.
+              {t(
+                "Bonik is a marketplace for electronics, office equipment, and related services."
+              )}
             </Paragraph>
 
             <AppStore />
@@ -36,7 +37,7 @@ export default function Footer2() {
               <div>
                 {customerCareLinks.map((item, ind) => (
                   <StyledLink href="/" key={ind}>
-                    {item}
+                    {t(item)}
                   </StyledLink>
                 ))}
               </div>

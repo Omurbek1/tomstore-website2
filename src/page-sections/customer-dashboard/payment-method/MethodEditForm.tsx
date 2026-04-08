@@ -7,6 +7,7 @@ import Box from "@component/Box";
 import Grid from "@component/grid/Grid";
 import { Button } from "@component/buttons";
 import TextField from "@component/text-field";
+import { t } from "@utils/utils";
 
 const VALIDATION_SCHEMA = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -42,7 +43,7 @@ export default function MethodEditForm() {
                 <TextField
                   fullWidth
                   name="card_no"
-                  label="Card Number"
+                  label={t("Card Number")}
                   placeholder="1234 5678 9012 3456"
                   onBlur={handleBlur}
                   value={values.card_no}
@@ -58,7 +59,7 @@ export default function MethodEditForm() {
                   placeholder="John Doe"
                   onBlur={handleBlur}
                   value={values.name}
-                  label="Name on Card"
+                  label={t("Name on Card")}
                   onChange={handleChange}
                   errorText={touched.name && errors.name}
                 />
@@ -69,7 +70,7 @@ export default function MethodEditForm() {
                   fullWidth
                   name="exp"
                   placeholder="MM/YY"
-                  label="Exp. Date"
+                  label={t("Exp. Date")}
                   value={values.exp}
                   onBlur={handleBlur}
                   onChange={handleChange}
@@ -82,7 +83,7 @@ export default function MethodEditForm() {
                   fullWidth
                   name="cvc"
                   placeholder="123"
-                  label="CVC"
+                  label={t("CVC")}
                   value={values.cvc}
                   onBlur={handleBlur}
                   onChange={handleChange}
@@ -93,7 +94,7 @@ export default function MethodEditForm() {
           </Box>
 
           <Button type="submit" variant="contained" color="primary">
-            Save Changes
+            {t("Save Changes")}
           </Button>
         </form>
       )}

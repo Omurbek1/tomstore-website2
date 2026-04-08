@@ -6,6 +6,7 @@ import NavLink from "@component/nav-link";
 import useCart from "@hook/useCart";
 import useWindowSize from "@hook/useWindowSize";
 import { layoutConstant } from "@utils/constants";
+import { t } from "@utils/utils";
 
 // STYLED COMPONENT
 const Wrapper = styled.div`
@@ -51,14 +52,14 @@ export default function MobileNavigationBar() {
     return (
       <Wrapper>
         {list.map((item) => (
-          <NavLink className="link" href={item.href} key={item.title}>
+          <NavLink className="link" href={item.href} key={item.key}>
             <Icon className="icon" variant="small">
               {item.icon}
             </Icon>
 
-            {item.title}
+            {t(item.title)}
 
-            {item.title === "Cart" && !!state.cart.length && (
+            {item.key === "cart" && !!state.cart.length && (
               <Chip
                 top="4px"
                 px="0.25rem"
@@ -80,8 +81,8 @@ export default function MobileNavigationBar() {
 }
 
 const list = [
-  { title: "Home", icon: "home", href: "/" },
-  { title: "Category", icon: "category", href: "/mobile-category-nav" },
-  { title: "Cart", icon: "bag", href: "/cart" },
-  { title: "Account", icon: "user-2", href: "/profile" }
+  { key: "home", title: "Home", icon: "home", href: "/" },
+  { key: "category", title: "Category", icon: "category", href: "/mobile-category-nav" },
+  { key: "cart", title: "Cart", icon: "bag", href: "/cart" },
+  { key: "account", title: "Account", icon: "user-2", href: "/profile" }
 ];

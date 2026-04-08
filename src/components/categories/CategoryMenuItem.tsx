@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { IconChevronRight } from "@tabler/icons-react";
 import Icon from "@component/icon/Icon";
 import { StyledCategoryMenuItem } from "./styles";
+import { t } from "@utils/utils";
 
 // ===============================================================
 interface CategoryMenuItemProps {
@@ -26,7 +27,7 @@ export default function CategoryMenuItem({
       <Link href={href}>
         <div className="category-dropdown-link">
           {icon && <Icon variant="small">{icon}</Icon>}
-          <span className="title">{title}</span>
+          <span className="title">{t(title)}</span>
           {caret && <IconChevronRight stroke={1.5} size={16} />}
         </div>
       </Link>

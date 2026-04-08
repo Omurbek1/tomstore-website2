@@ -16,6 +16,7 @@ import TextField from "@component/text-field";
 import { Button, IconButton } from "@component/buttons";
 import Typography, { H5, H6 } from "@component/Typography";
 import Hidden from "@component/hidden";
+import { t } from "@utils/utils";
 
 const ORDER_STATUS_LIST = [
   { label: "Processing", value: "Processing" },
@@ -59,7 +60,7 @@ export default function OrderDetails() {
           <Hidden down={769}>
             <FlexBox className="pre" flex="0 0 0 !important" m="6px" alignItems="center">
               <Typography fontSize="14px" color="text.muted" mr="4px">
-                Order ID:
+              {t("Order ID:")}
               </Typography>
 
               <Typography fontSize="14px">1234567890</Typography>
@@ -68,14 +69,17 @@ export default function OrderDetails() {
 
           <FlexBox className="pre" m="6px" alignItems="center">
             <Typography fontSize="14px" color="text.muted" mr="4px">
-              Placed on:
+              {t("Placed on:")}
             </Typography>
 
             <Typography fontSize="14px">{format(new Date(), "dd MMM, yyyy")}</Typography>
           </FlexBox>
 
           <Box maxWidth="160px" flex="1 1 0 !important">
-            <Select placeholder="Order Status" options={ORDER_STATUS_LIST} />
+            <Select
+              placeholder={t("Order Status")}
+              options={ORDER_STATUS_LIST.map((item) => ({ ...item, label: t(item.label) }))}
+            />
           </Box>
         </TableRow>
 
@@ -101,7 +105,7 @@ export default function OrderDetails() {
 
               <FlexBox flex="1 1 260px" m="6px" alignItems="center">
                 <Typography fontSize="14px" color="text.muted">
-                  Product properties: {item.properties}
+                  {t("Product properties:")} {item.properties}
                 </Typography>
               </FlexBox>
 
@@ -118,8 +122,8 @@ export default function OrderDetails() {
       <Grid container spacing={6}>
         <Grid item lg={6} md={6} xs={12}>
           <Card p="20px 30px" mb="1.5rem" borderRadius={12}>
-            <H5 mt="0px" mb="14px">
-              Shipping Address
+              <H5 mt="0px" mb="14px">
+              {t("Shipping Address")}
             </H5>
 
             <TextArea
@@ -131,8 +135,8 @@ export default function OrderDetails() {
           </Card>
 
           <Card p="20px 30px" borderRadius={12}>
-            <H5 mt="0px" mb="14px">
-              Customer's Note
+              <H5 mt="0px" mb="14px">
+              {t("Customer's Note")}
             </H5>
 
             <TextArea defaultValue="Please deliver ASAP." rows={5} borderRadius={10} fullWidth />
@@ -141,13 +145,13 @@ export default function OrderDetails() {
 
         <Grid item lg={6} md={6} xs={12}>
           <Card p="20px 30px" mb="1.5rem" borderRadius={12}>
-            <H5 mt="0px" mb="14px">
-              Total Summary
+              <H5 mt="0px" mb="14px">
+              {t("Total Summary")}
             </H5>
 
             <FlexBox justifyContent="space-between" alignItems="center" mb="0.5rem">
               <Typography fontSize="14px" color="text.hint">
-                Subtotal:
+                {t("Subtotal:")}
               </Typography>
 
               <H6 my="0px">$335</H6>
@@ -155,7 +159,7 @@ export default function OrderDetails() {
 
             <FlexBox justifyContent="space-between" alignItems="center" mb="0.5rem">
               <Typography fontSize="14px" color="text.hint">
-                Shipping fee:
+                {t("Shipping fee:")}
               </Typography>
 
               <FlexBox alignItems="center" maxWidth="100px" ml="8px" mt="0.25rem">
@@ -166,7 +170,7 @@ export default function OrderDetails() {
 
             <FlexBox justifyContent="space-between" alignItems="center" mb="0.5rem">
               <Typography fontSize="14px" color="text.hint">
-                Discount:
+                {t("Discount:")}
               </Typography>
 
               <FlexBox alignItems="center" maxWidth="100px" ml="8px" mt="0.25rem">
@@ -178,15 +182,15 @@ export default function OrderDetails() {
             <Divider mb="0.5rem" />
 
             <FlexBox justifyContent="space-between" alignItems="center" mb="1rem">
-              <H6 my="0px">Total</H6>
+              <H6 my="0px">{t("Total")}</H6>
               <H6 my="0px">$315</H6>
             </FlexBox>
 
-            <Typography fontSize="14px">Paid by Credit/Debit Card</Typography>
+            <Typography fontSize="14px">{t("Paid by Credit/Debit Card")}</Typography>
           </Card>
 
           <Button variant="contained" color="primary" ml="auto">
-            Save Changes
+            {t("Save Changes")}
           </Button>
         </Grid>
       </Grid>

@@ -8,28 +8,29 @@ import { Button } from "@component/buttons";
 import DashboardPageHeader from "@component/DashboardPageHeader";
 // PAGE SECTION COMPONENTS
 import { ProductForm } from "@sections/vendor-dashboard/products";
-
-const CATEGORIES = [
-  { label: "Fashion", value: "fashion" },
-  { label: "Gadget", value: "gadget" }
-];
+import { t } from "@utils/utils";
 
 const HEADER_LINK = (
   <Link href="/vendor/products">
-    <Button color="primary">Back</Button>
+    <Button color="primary">{t("Back")}</Button>
   </Link>
 );
 
 export default function AddProduct() {
+  const categories = [
+    { label: t("Fashion"), value: "fashion" },
+    { label: t("Gadget"), value: "gadget" }
+  ];
+
   return (
     <Fragment>
       <DashboardPageHeader
-        title="Add Product"
+        title={t("Add Product")}
         button={HEADER_LINK}
         Icon={<IconPackage size={24} />}
       />
 
-      <ProductForm categories={CATEGORIES} />
+      <ProductForm categories={categories} />
     </Fragment>
   );
 }

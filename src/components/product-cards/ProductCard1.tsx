@@ -134,7 +134,9 @@ export default function ProductCard1({
   const theme = useTheme();
   const { state, dispatch } = useCart();
   const [open, setOpen] = useState(false);
-  const cartItem = state.cart.find((item) => item.id === id);
+  const discount = off ?? 0;
+  const cartId = id ?? slug;
+  const cartItem = state.cart.find((item) => item.id === cartId);
 
   const toggleDialog = useCallback(() => {
     setOpen((open) => !open);
@@ -145,7 +147,7 @@ export default function ProductCard1({
       dispatch({
         type: "CHANGE_CART_AMOUNT",
         payload: {
-          id,
+          id: cartId,
           slug,
           price,
           imgUrl,
@@ -161,7 +163,7 @@ export default function ProductCard1({
     <Fragment>
       <Wrapper borderRadius={12} {...props}>
         <div className="image-holder">
-          {!!off && (
+          {!!discount && (
             <Chip
               top="10px"
               left="10px"
@@ -172,7 +174,7 @@ export default function ProductCard1({
               position="absolute"
               color="primary.text"
               zIndex={1}>
-              {off}% off
+              {discount}% off
             </Chip>
           )}
 
@@ -214,10 +216,10 @@ export default function ProductCard1({
 
               <FlexBox alignItems="center" mt="10px">
                 <SemiSpan pr="0.5rem" fontWeight="600" color="primary.main">
-                  {calculateDiscount(price, off as number)}
-                </SemiSpan>
+                {calculateDiscount(price, discount)}
+              </SemiSpan>
 
-                {!!off && (
+                {!!discount && (
                   <SemiSpan color="text.muted" fontWeight="600">
                     <del>{currency(price)}</del>
                   </SemiSpan>

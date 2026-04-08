@@ -2,6 +2,7 @@ import Box from "@component/Box";
 import { Carousel } from "@component/carousel";
 import ProductCard1 from "@component/product-cards/ProductCard1";
 import CategorySectionCreator from "@component/CategorySectionCreator";
+import { t } from "@utils/utils";
 // API FUNCTIONS
 import api from "@utils/__api__/market-1";
 
@@ -16,7 +17,7 @@ export default async function Section2() {
   const products = await api.getFlashDeals();
 
   return (
-    <CategorySectionCreator iconName="light" title="Flash Deals" seeMoreLink="#">
+    <CategorySectionCreator iconName="light" title={t("Flash Deals")} seeMoreLink="#">
       <Box mt="-0.25rem" mb="-0.25rem">
         <Carousel slidesToShow={4} responsive={responsive}>
           {products.map((item, ind) => (
@@ -28,7 +29,7 @@ export default async function Section2() {
                 price={item.price}
                 title={item.title}
                 off={item.discount}
-                images={item.images}
+                images={item.images ?? ["/placeholder.png"]}
                 imgUrl={item.thumbnail}
                 rating={item.rating || 4}
               />

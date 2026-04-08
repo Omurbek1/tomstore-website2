@@ -3,6 +3,7 @@ import Grid from "@component/grid/Grid";
 import { H3 } from "@component/Typography";
 import { ProductCard1 } from "@component/product-cards";
 import Product from "@models/product.model";
+import { t } from "@utils/utils";
 
 // ============================================================
 type Props = { products: Product[] };
@@ -11,7 +12,7 @@ type Props = { products: Product[] };
 export default function RelatedProducts({ products }: Props) {
   return (
     <Box mb="3.75rem">
-      <H3 mb="1.5rem">Related Products</H3>
+      <H3 mb="1.5rem">{t("Related Products")}</H3>
 
       <Grid container spacing={8}>
         {products.map((item) => (
@@ -23,7 +24,7 @@ export default function RelatedProducts({ products }: Props) {
               price={item.price}
               title={item.title}
               off={item.discount}
-              images={item.images}
+              images={item.images ?? ["/placeholder.png"]}
               imgUrl={item.thumbnail}
               rating={item.rating || 4}
             />

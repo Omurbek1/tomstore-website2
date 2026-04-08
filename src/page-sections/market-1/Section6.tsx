@@ -13,6 +13,7 @@ import CategorySectionHeader from "@component/CategorySectionHeader";
 import StyledProductCategory from "./styled";
 import Brand from "@models/Brand.model";
 import Product from "@models/product.model";
+import { t } from "@utils/utils";
 
 // ==============================================================
 type Props = { carList: Product[]; carBrands: Brand[] };
@@ -57,14 +58,14 @@ export default function Section6({ carList, carBrands }: Props) {
               shadow={selected.match("all") ? 4 : null}
               bg={selected.match("all") ? "white" : "gray.100"}>
               <span id="all" className="product-category-title show-all">
-                View All Brands
+                {t("View All Brands")}
               </span>
             </StyledProductCategory>
           </Box>
         </Hidden>
 
         <Box flex="1 1 0" minWidth="0px">
-          <CategorySectionHeader title="Cars" seeMoreLink="#" />
+          <CategorySectionHeader title={t("Cars")} seeMoreLink="#" />
 
           <Grid container spacing={6}>
             {carList.map((item, ind) => (
@@ -77,7 +78,7 @@ export default function Section6({ carList, carBrands }: Props) {
                   price={item.price}
                   off={item.discount}
                   rating={item.rating}
-                  images={item.images}
+                  images={item.images ?? ["/placeholder.png"]}
                   imgUrl={item.thumbnail}
                 />
               </Grid>

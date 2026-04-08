@@ -5,7 +5,7 @@ import { convertHexToRGB, isValidProp } from "@utils/utils";
 
 interface Props extends SpaceProps, ColorProps {
   fullWidth?: boolean;
-  errorText?: string;
+  errorText?: string | boolean;
 }
 
 export const StyledTextArea = styled.textarea.withConfig({

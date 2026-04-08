@@ -17,6 +17,7 @@ import StyledProductCategory from "./styled";
 import Shop from "@models/shop.model";
 import Brand from "@models/Brand.model";
 import Product from "@models/product.model";
+import { t } from "@utils/utils";
 
 // ======================================================
 interface Props {
@@ -53,14 +54,14 @@ export default function Section7({ shops, brands, title, productList }: Props) {
         <Hidden down={768} mr="1.75rem">
           <Box shadow={6} borderRadius={10} padding="1.25rem" bg="white">
             <FlexBox mt="-0.5rem" mb="0.5rem">
-              <Typography
-                fontWeight="600"
-                fontSize="20px"
-                padding="0.5rem 1rem"
-                style={{ cursor: "pointer" }}
-                color={type === "brands" ? "gray.900" : "gray.600"}
-                onClick={handleChangeType("brands")}>
-                Brands
+                <Typography
+                  fontWeight="600"
+                  fontSize="20px"
+                  padding="0.5rem 1rem"
+                  style={{ cursor: "pointer" }}
+                  color={type === "brands" ? "gray.900" : "gray.600"}
+                  onClick={handleChangeType("brands")}>
+                {t("Brands")}
               </Typography>
 
               <Typography
@@ -72,14 +73,14 @@ export default function Section7({ shops, brands, title, productList }: Props) {
                 |
               </Typography>
 
-              <Typography
-                fontSize="20px"
-                fontWeight="600"
-                padding="0.5rem 1rem"
-                style={{ cursor: "pointer" }}
-                onClick={handleChangeType("shops")}
-                color={type === "shops" ? "gray.900" : "gray.600"}>
-                Shops
+                <Typography
+                  fontSize="20px"
+                  fontWeight="600"
+                  padding="0.5rem 1rem"
+                  style={{ cursor: "pointer" }}
+                  onClick={handleChangeType("shops")}
+                  color={type === "shops" ? "gray.900" : "gray.600"}>
+                {t("Shops")}
               </Typography>
             </FlexBox>
 
@@ -110,7 +111,9 @@ export default function Section7({ shops, brands, title, productList }: Props) {
               onClick={handleCategoryClick(`all-${type}`)}
               shadow={selected.match(`all-${type}`) ? 4 : null}
               bg={selected.match(`all-${type}`) ? "white" : "gray.100"}>
-              <span className="product-category-title show-all">View All {type}</span>
+              <span className="product-category-title show-all">
+                {t("View all")} {t(type === "brands" ? "Brands" : "Shops")}
+              </span>
             </StyledProductCategory>
           </Box>
         </Hidden>
@@ -129,7 +132,7 @@ export default function Section7({ shops, brands, title, productList }: Props) {
                   price={item.price}
                   off={item.discount}
                   rating={item.rating}
-                  images={item.images}
+                  images={item.images ?? ["/placeholder.png"]}
                   imgUrl={item.thumbnail}
                 />
               </Grid>

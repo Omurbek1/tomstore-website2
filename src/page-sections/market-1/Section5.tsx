@@ -2,6 +2,7 @@ import Card from "@component/Card";
 import Grid from "@component/grid/Grid";
 import ProductCard2 from "@component/product-cards/ProductCard2";
 import CategorySectionCreator from "@component/CategorySectionCreator";
+import { t } from "@utils/utils";
 // API FUNCTIONS
 import api from "@utils/__api__/market-1";
 
@@ -9,7 +10,7 @@ export default async function Section5() {
   const newArrivalsList = await api.getNewArrivalList();
 
   return (
-    <CategorySectionCreator iconName="new-product-1" title="New Arrivals" seeMoreLink="#">
+    <CategorySectionCreator iconName="new-product-1" title={t("New Arrivals")} seeMoreLink="#">
       <Card p="1rem" borderRadius={8}>
         <Grid container spacing={6}>
           {newArrivalsList.map((item) => (

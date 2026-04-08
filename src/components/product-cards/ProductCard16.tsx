@@ -16,7 +16,7 @@ import LazyImage from "@component/LazyImage";
 import { H3, Paragraph, Span } from "@component/Typography";
 import ProductQuickView from "@component/products/ProductQuickView";
 import useCart from "@hook/useCart";
-import { calculateDiscount, currency } from "@utils/utils";
+import { calculateDiscount, currency, t } from "@utils/utils";
 
 // STYLED COMPONENTS
 const StyledBazaarCard = styled(Card)(({ theme }) => ({
@@ -150,7 +150,9 @@ export default function ProductCard16(props: ProductCardProps) {
   return (
     <StyledBazaarCard hoverEffect={hoverEffect}>
       <ImageWrapper>
-        {off !== 0 && <StyledChip color="primary">{`${off}% off`}</StyledChip>}
+        {off !== 0 && (
+          <StyledChip color="primary">{t("{discount}% off", { discount: off })}</StyledChip>
+        )}
 
         <ImageBox>
           <Link href={`/product/${slug}`}>
@@ -235,11 +237,11 @@ export default function ProductCard16(props: ProductCardProps) {
             }}>
             {cartItem?.qty ? (
               <Fragment>
-                <Icon size="16px">minus</Icon> Remove from Cart
+                <Icon size="16px">minus</Icon> {t("Remove from Cart")}
               </Fragment>
             ) : (
               <Fragment>
-                <Icon size="16px">plus</Icon> Add to Cart
+                <Icon size="16px">plus</Icon> {t("Add to Cart")}
               </Fragment>
             )}
           </Button>

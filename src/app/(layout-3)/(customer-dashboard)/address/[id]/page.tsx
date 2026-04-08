@@ -11,10 +11,11 @@ import DashboardPageHeader from "@component/DashboardPageHeader";
 import { AddressForm } from "@sections/customer-dashboard/address";
 // CUSTOM DATA MODEL
 import { IDParams } from "interfaces";
+import { t } from "@utils/utils";
 
 const HEADER_LINK = (
   <Link href="/address">
-    <Button color="primary">Back</Button>
+    <Button color="primary">{t("Back")}</Button>
   </Link>
 );
 
@@ -25,7 +26,7 @@ const AddressDetails = async ({ params }: IDParams) => {
   return (
     <Fragment>
       <DashboardPageHeader
-        title="Edit Address"
+        title={t("Edit Address")}
         button={HEADER_LINK}
         Icon={<IconMapPin size={27} />}
       />

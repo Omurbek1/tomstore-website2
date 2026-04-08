@@ -5,6 +5,7 @@ import { ProductCard1 } from "@component/product-cards";
 import { SemiSpan } from "@component/Typography";
 import useWindowSize from "@hook/useWindowSize";
 import Product from "@models/product.model";
+import { t } from "@utils/utils";
 
 // ==========================================================
 interface Props {
@@ -27,7 +28,7 @@ export default function ProductGridView({ products }: Props) {
               price={item.price}
               title={item.title}
               off={item.discount}
-              images={item.images}
+              images={item.images ?? ["/placeholder.png"]}
               imgUrl={item.thumbnail}
               rating={item.rating || 4}
             />
@@ -45,7 +46,7 @@ export default function ProductGridView({ products }: Props) {
           justifyContent: "space-between",
           [isTablet ? "flex-direction" : "row"]: "column"
         }}>
-        <SemiSpan>Showing 1-9 of 1.3k Products</SemiSpan>
+        <SemiSpan>{t("Showing 1-9 of 1.3k Products")}</SemiSpan>
         <Pagination pageCount={products.length} />
       </FlexBox>
     </div>

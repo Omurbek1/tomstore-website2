@@ -14,13 +14,14 @@ import Typography, { Paragraph, SemiSpan, Small } from "@component/Typography";
 import DashboardPageHeader from "@component/DashboardPageHeader";
 // PAGE SECTION COMPONENTS
 import { SupportPagination } from "@sections/customer-dashboard/support-ticket";
+import { t } from "@utils/utils";
 
 export default async function TicketList() {
   const ticketList = await api.getTicketList();
 
   return (
     <Fragment>
-      <DashboardPageHeader title="Support Ticket" Icon={<IconHelp size={27} />} />
+      <DashboardPageHeader title={t("Support Ticket")} Icon={<IconHelp size={27} />} />
 
       {ticketList.map((item) => (
         <Link href={`/support-tickets/${item.slug}`} key={item.id}>

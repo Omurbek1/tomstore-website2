@@ -6,6 +6,7 @@ import FlexBox from "@component/FlexBox";
 import { Button } from "@component/buttons";
 import Typography, { H6 } from "@component/Typography";
 import { currency } from "@utils/utils";
+import { t } from "@utils/utils";
 
 export default function WriteReview({ item }: { item: any }) {
   return (
@@ -23,13 +24,13 @@ export default function WriteReview({ item }: { item: any }) {
 
       <FlexBox flex="1 1 260px" m="6px" alignItems="center">
         <Typography fontSize="14px" color="text.muted">
-          Product properties: Black, L
+          {t("Product properties:")} Black, L
         </Typography>
       </FlexBox>
 
       <FlexBox flex="160px" m="6px" alignItems="center">
         <Button variant="text" color="primary">
-          <Typography fontSize="14px">Write a Review</Typography>
+          <Typography fontSize="14px">{t("Write a Review")}</Typography>
         </Button>
       </FlexBox>
     </FlexBox>

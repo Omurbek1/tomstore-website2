@@ -7,6 +7,7 @@ import Grid from "@component/grid/Grid";
 import { Button } from "@component/buttons";
 import TextField from "@component/text-field";
 import Address from "@models/address.model";
+import { t } from "@utils/utils";
 
 const VALIDATION_SCHEMA = yup.object({
   name: yup.string().required("Name is required"),
@@ -48,8 +49,8 @@ export default function AddressForm({ address }: AddressFormProps) {
                 <TextField
                   fullWidth
                   name="name"
-                  label="Name"
-                  placeholder="Enter your name"
+                  label={t("Name")}
+                  placeholder={t("Enter your name")}
                   onBlur={handleBlur}
                   value={values.name}
                   onChange={handleChange}
@@ -60,8 +61,8 @@ export default function AddressForm({ address }: AddressFormProps) {
               <Grid item md={6} xs={12}>
                 <TextField
                   fullWidth
-                  label="Phone"
-                  placeholder="Enter your phone number"
+                  label={t("Phone")}
+                  placeholder={t("Enter your phone number")}
                   name="contact"
                   onBlur={handleBlur}
                   value={values.contact}
@@ -74,8 +75,8 @@ export default function AddressForm({ address }: AddressFormProps) {
                 <TextField
                   fullWidth
                   name="street"
-                  label="Street"
-                  placeholder="Enter your street"
+                  label={t("Street")}
+                  placeholder={t("Enter your street")}
                   onBlur={handleBlur}
                   value={values.street}
                   onChange={handleChange}
@@ -87,8 +88,8 @@ export default function AddressForm({ address }: AddressFormProps) {
                 <TextField
                   fullWidth
                   name="city"
-                  label="City"
-                  placeholder="Enter your city"
+                  label={t("City")}
+                  placeholder={t("Enter your city")}
                   onBlur={handleBlur}
                   value={values.city}
                   onChange={handleChange}
@@ -100,8 +101,8 @@ export default function AddressForm({ address }: AddressFormProps) {
                 <TextField
                   fullWidth
                   name="country"
-                  label="Country"
-                  placeholder="Enter your country"
+                  label={t("Country")}
+                  placeholder={t("Enter your country")}
                   onBlur={handleBlur}
                   value={values.country}
                   onChange={handleChange}
@@ -112,7 +113,7 @@ export default function AddressForm({ address }: AddressFormProps) {
           </Box>
 
           <Button type="submit" variant="contained" color="primary">
-            Save Changes
+            {t("Save Changes")}
           </Button>
         </form>
       )}

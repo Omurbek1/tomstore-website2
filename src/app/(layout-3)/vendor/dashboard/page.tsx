@@ -6,6 +6,7 @@ import api from "@utils/__api__/dashboard";
 import DashboardPageHeader from "@component/DashboardPageHeader";
 // PAGE SECTION COMPONENTS
 import DashboardContent from "@sections/vendor-dashboard/dashboard";
+import { t } from "@utils/utils";
 
 export default async function VendorDashboard() {
   const [sales, summeryCards, countrySales] = await Promise.all([
@@ -16,7 +17,7 @@ export default async function VendorDashboard() {
 
   return (
     <Fragment>
-      <DashboardPageHeader title="Dashboard" Icon={<IconDeviceAnalytics size={24} />} />
+      <DashboardPageHeader title={t("Dashboard")} Icon={<IconDeviceAnalytics size={24} />} />
       <DashboardContent sales={sales} summeryCards={summeryCards} countrySales={countrySales} />
     </Fragment>
   );

@@ -9,10 +9,11 @@ import DashboardPageHeader from "@component/DashboardPageHeader";
 import { MethodEditForm } from "@sections/customer-dashboard/payment-method";
 // CUSTOM DATA MODEL
 import { IDParams } from "interfaces";
+import { t } from "@utils/utils";
 
 const HEADER_LINK = (
   <Link href="/payment-methods">
-    <Button color="primary">Back</Button>
+    <Button color="primary">{t("Back")}</Button>
   </Link>
 );
 
@@ -24,7 +25,7 @@ export default async function PaymentMethodEditor({ params }: IDParams) {
       <DashboardPageHeader
         button={HEADER_LINK}
         Icon={<IconCreditCard size={27} />}
-        title={`${id === "add" ? "Add New" : "Edit"} Payment Method`}
+        title={id === "add" ? t("Add New Payment Method") : t("Edit Payment Method")}
       />
 
       <Card1 borderRadius={8}>

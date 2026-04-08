@@ -1,32 +1,39 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import NextImage from "next/image";
 import { IconChevronDown, IconMail, IconPhone } from "@tabler/icons-react";
 
 import Menu from "../menu";
-import Image from "../Image";
 import NavLink from "../nav-link";
 import MenuItem from "../MenuItem";
 import Container from "../Container";
 import { Small } from "../Typography";
 import { StyledTopbar } from "./styles";
 import { LANGUAGES, CURRENCIES } from "./data";
+import { formatExchangeRate, t } from "@utils/utils";
+import { useStorefrontPreferences } from "@context/StorefrontContext";
+import type { StorefrontCurrency, StorefrontLocale } from "@lib/storefront-runtime";
 
 import logo from "../../../public/assets/images/logo.svg";
 
 export default function Topbar() {
-  const [currency, setCurrency] = useState(CURRENCIES[0]);
-  const [language, setLanguage] = useState(LANGUAGES[0]);
+  const { locale, currency: selectedCurrency, exchangeRate, setLocale, setCurrency } =
+    useStorefrontPreferences();
 
-  const handleCurrencyClick = useCallback((curr: typeof currency) => () => setCurrency(curr), []);
+  const handleCurrencyClick = useCallback(
+    (curr: (typeof CURRENCIES)[number]) => () => setCurrency(curr.id as StorefrontCurrency),
+    [setCurrency],
+  );
 
-  const handleLanguageClick = useCallback((lang: typeof language) => () => setLanguage(lang), []);
+  const handleLanguageClick = useCallback(
+    (lang: (typeof LANGUAGES)[number]) => () => setLocale(lang.id as StorefrontLocale),
+    [setLocale],
+  );
 
-  useEffect(() => {
-    // get language from browser
-    // console.log(navigator.language);
-  }, []);
+  const currentLanguage = LANGUAGES.find((item) => item.id === locale) || LANGUAGES[0];
+  const currentCurrency =
+    CURRENCIES.find((item) => item.id === selectedCurrency) || CURRENCIES[0];
 
   return (
     <StyledTopbar>
@@ -49,46 +56,46 @@ export default function Topbar() {
 
         <div className="topbar-right">
           <NavLink className="link" href="/">
-            Theme FAQ"s
+            {t("Theme FAQ's")}
           </NavLink>
 
           <NavLink className="link" href="/">
-            Need Help?
+            {t("Need Help?")}
           </NavLink>
 
           <Menu
             direction="right"
             handler={(handleOpen) => (
               <div className="dropdown-handler" onClick={handleOpen}>
-                <Image src={language.imgUrl} alt={language.title} />
-                <Small fontWeight="600">{language.title}</Small>
+                <Small fontWeight="600">{currentLanguage.title}</Small>
                 <IconChevronDown size={16} stroke={1.5} />
               </div>
             )}>
             {LANGUAGES.map((item) => (
               <MenuItem key={item.id} onClick={handleLanguageClick(item)}>
-                <Image src={item.imgUrl} borderRadius="2px" mr="0.5rem" alt={item.title} />
                 <Small fontWeight="600">{item.title}</Small>
               </MenuItem>
             ))}
           </Menu>
 
-          {/* <Menu
+          <Menu
             direction="right"
-            handler={
-              <FlexBox className="dropdown-handler" alignItems="center" height="40px">
-                <Image src={currency.imgUrl} alt={currency.title} />
-                <Small fontWeight="600">{currency.title}</Small>
+            handler={(handleOpen) => (
+              <div className="dropdown-handler" onClick={handleOpen}>
+                <Small fontWeight="600">{currentCurrency.title}</Small>
                 <IconChevronDown size={16} stroke={1.5} />
-              </FlexBox>
-            }>
+              </div>
+            )}>
             {CURRENCIES.map((item) => (
               <MenuItem key={item.id} onClick={handleCurrencyClick(item)}>
-                <Image src={item.imgUrl} borderRadius="2px" mr="0.5rem" alt={item.title} />
                 <Small fontWeight="600">{item.title}</Small>
               </MenuItem>
             ))}
-          </Menu> */}
+          </Menu>
+
+          <Small fontWeight="600" ml="0.75rem">
+            {t("1 USD = {rate} KGS", { rate: formatExchangeRate(exchangeRate) })}
+          </Small>
         </div>
       </Container>
     </StyledTopbar>

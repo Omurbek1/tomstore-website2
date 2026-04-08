@@ -6,10 +6,11 @@ import { Button } from "@component/buttons";
 import DashboardPageHeader from "@component/DashboardPageHeader";
 // PAGE SECTION COMPONENTS
 import { PaymentMethodList } from "@sections/customer-dashboard/payment-method";
+import { t } from "@utils/utils";
 
 const HEADER_LINK = (
   <Link href="/payment-methods/add">
-    <Button color="primary">Add New</Button>
+    <Button color="primary">{t("Add New")}</Button>
   </Link>
 );
 
@@ -18,7 +19,7 @@ export default function PaymentMethods() {
     <Fragment>
       <DashboardPageHeader
         button={HEADER_LINK}
-        title="Payment Methods"
+        title={t("Payment Methods")}
         Icon={<IconCreditCard size={27} />}
       />
 

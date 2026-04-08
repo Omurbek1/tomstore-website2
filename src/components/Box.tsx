@@ -41,11 +41,15 @@ interface BoxProps
 const Box = styled.div.withConfig({
   shouldForwardProp: isValidProp
 })<BoxProps>(
-  ({ shadow = 0, cursor = "unset", transition, theme }) => ({
+  ({ shadow = 0, cursor = "unset", transition, theme }) => {
+    const resolvedShadow = shadow ?? 0;
+
+    return {
     cursor,
     transition,
-    boxShadow: theme.shadows[shadow]
-  }),
+    boxShadow: theme.shadows[resolvedShadow]
+  };
+  },
   compose(layout, space, color, grid, position, flexbox, border, typography)
 );
 

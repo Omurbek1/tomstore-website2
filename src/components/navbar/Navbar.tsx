@@ -13,6 +13,7 @@ import { Button } from "../buttons";
 import Container from "../Container";
 import Typography, { Span } from "../Typography";
 import Categories from "../categories/Categories";
+import { t } from "@utils/utils";
 
 import StyledNavbar from "./styles";
 import navbarNavigations from "@data/navbarNavigations";
@@ -30,6 +31,8 @@ type NavbarProps = { navListOpen?: boolean };
 // ==============================================================
 
 const NavItem = ({ nav, isRoot = false }: { nav: Nav; isRoot?: boolean }) => {
+  const href = nav.url ?? "/";
+
   const renderBadgeOrSpan = (title: string) =>
     nav.badge ? (
       <Badge style={{ marginRight: "0px" }} title={nav.badge}>
@@ -41,7 +44,7 @@ const NavItem = ({ nav, isRoot = false }: { nav: Nav; isRoot?: boolean }) => {
 
   const renderExternalLink = () => (
     <NavLink
-      href={nav.url}
+      href={href}
       key={nav.title}
       target="_blank"
       className="nav-link"
@@ -51,7 +54,7 @@ const NavItem = ({ nav, isRoot = false }: { nav: Nav; isRoot?: boolean }) => {
   );
 
   const renderInternalLink = () => (
-    <NavLink className={isRoot ? "nav-link" : ""} href={nav.url} key={nav.title}>
+    <NavLink className={isRoot ? "nav-link" : ""} href={href} key={nav.title}>
       {isRoot ? renderBadgeOrSpan(nav.title) : <MenuItem>{renderBadgeOrSpan(nav.title)}</MenuItem>}
     </NavLink>
   );
@@ -68,7 +71,7 @@ const NavItem = ({ nav, isRoot = false }: { nav: Nav; isRoot?: boolean }) => {
           {renderBadgeOrSpan(nav.title)}
           <div className="root-child">
             <Card borderRadius={8} mt="1.25rem" py="0.5rem" boxShadow="large" minWidth="230px">
-              <NestedNav list={nav.child} />
+              <NestedNav list={nav.child ?? []} />
             </Card>
           </div>
         </FlexBox>
@@ -84,7 +87,7 @@ const NavItem = ({ nav, isRoot = false }: { nav: Nav; isRoot?: boolean }) => {
 
         <Box className="child" pl="0.5rem">
           <Card py="0.5rem" borderRadius={8} boxShadow="large" minWidth="230px">
-            <NestedNav list={nav.child} />
+            <NestedNav list={nav.child ?? []} />
           </Card>
         </Box>
       </Box>
@@ -134,7 +137,7 @@ export default function Navbar({ navListOpen }: NavbarProps) {
                 fontWeight="600"
                 textAlign="left"
                 color="text.muted">
-                Categories
+                {t("Categories")}
               </Typography>
 
               <IconChevronDown className="dropdown-icon" size={18} stroke={1.5} />
@@ -142,7 +145,23 @@ export default function Navbar({ navListOpen }: NavbarProps) {
           )}
         />
 
-        <FlexBox style={{ gap: 32 }}>{renderNestedNav(navbarNavigations, true)}</FlexBox>
+        <FlexBox style={{ gap: 32 }}>
+          {renderNestedNav(
+            navbarNavigations.map((nav) => ({
+              ...nav,
+              title: t(nav.title),
+              child: nav.child?.map((child) => ({
+                ...child,
+                title: t(child.title),
+                child: child.child?.map((leaf) => ({
+                  ...leaf,
+                  title: t(leaf.title)
+                }))
+              }))
+            })),
+            true
+          )}
+        </FlexBox>
       </Container>
     </StyledNavbar>
   );

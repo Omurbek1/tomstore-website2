@@ -6,6 +6,7 @@ import { Button } from "@component/buttons";
 import { ProductCard8 } from "@component/product-cards";
 import { H2, H3, SemiSpan } from "@component/Typography";
 import Product from "@models/product.model";
+import { currency, t } from "@utils/utils";
 
 // STYLED COMPONENT
 const FrequentlyBoughtWrapper = styled("div")`
@@ -35,7 +36,7 @@ type Props = { products: Product[] };
 export default function FrequentlyBought({ products }: Props) {
   return (
     <FrequentlyBoughtWrapper>
-      <H3 mb="24px">Frequently Bought Together</H3>
+      <H3 mb="24px">{t("Frequently Bought Together")}</H3>
 
       <FlexBox className="card-holder" flexWrap="wrap" m="-0.5rem">
         {products.map((item, ind) => (
@@ -81,16 +82,16 @@ export default function FrequentlyBought({ products }: Props) {
           flexDirection="column"
           borderColor="gray.400"
           justifyContent="center">
-          <H3 color="primary.main">$2500</H3>
-          <SemiSpan mb="1rem">Save $500</SemiSpan>
+          <H3 color="primary.main">{currency(2500)}</H3>
+          <SemiSpan mb="1rem">{t("Save {amount}", { amount: currency(500) })}</SemiSpan>
 
           <FlexBox>
             <Button variant="contained" color="primary" size="small" mr="1rem">
-              Add to Cart
+              {t("Add to Cart")}
             </Button>
 
             <Button variant="outlined" color="primary" size="small">
-              Add to List
+              {t("Add to List")}
             </Button>
           </FlexBox>
         </FlexBox>

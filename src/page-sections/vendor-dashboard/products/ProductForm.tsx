@@ -15,6 +15,7 @@ import { Button } from "@component/buttons";
 import TextField from "@component/text-field";
 
 import Product from "@models/product.model";
+import { t } from "@utils/utils";
 
 // STYLED COMPONENT
 const UploadImageBox = styled("div")(({ theme }) => ({
@@ -76,8 +77,8 @@ export default function ProductUpdateForm({ product, categories }: Props) {
                 <TextField
                   fullWidth
                   name="name"
-                  label="Name"
-                  placeholder="Name"
+                  label={t("Name")}
+                  placeholder={t("Name")}
                   value={values.name}
                   onBlur={handleBlur}
                   onChange={handleChange}
@@ -88,10 +89,10 @@ export default function ProductUpdateForm({ product, categories }: Props) {
               <Grid item sm={6} xs={12}>
                 <Select
                   isMulti
-                  label="Category"
+                  label={t("Category")}
                   value={values.category}
                   options={categories}
-                  placeholder="Select category"
+                  placeholder={t("Select category")}
                   onChange={(value) => setFieldValue("category", value)}
                   errorText={touched.category && errors.category}
                 />
@@ -114,10 +115,10 @@ export default function ProductUpdateForm({ product, categories }: Props) {
                   rows={6}
                   fullWidth
                   name="description"
-                  label="Description"
+                  label={t("Description")}
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  placeholder="Description"
+                  placeholder={t("Description")}
                   value={values.description}
                   errorText={touched.description && errors.description}
                 />
@@ -127,8 +128,8 @@ export default function ProductUpdateForm({ product, categories }: Props) {
                 <TextField
                   fullWidth
                   name="stock"
-                  label="Stock"
-                  placeholder="Stock"
+                  label={t("Stock")}
+                  placeholder={t("Stock")}
                   onBlur={handleBlur}
                   value={values.stock}
                   onChange={handleChange}
@@ -140,8 +141,8 @@ export default function ProductUpdateForm({ product, categories }: Props) {
                 <TextField
                   fullWidth
                   name="tags"
-                  label="Tags"
-                  placeholder="Tags"
+                  label={t("Tags")}
+                  placeholder={t("Tags")}
                   value={values.tags}
                   onBlur={handleBlur}
                   onChange={handleChange}
@@ -156,9 +157,9 @@ export default function ProductUpdateForm({ product, categories }: Props) {
                   type="number"
                   onBlur={handleBlur}
                   value={values.price}
-                  label="Regular Price"
+                  label={t("Regular Price")}
                   onChange={handleChange}
-                  placeholder="Regular Price"
+                  placeholder={t("Regular Price")}
                   errorText={touched.price && errors.price}
                 />
               </Grid>
@@ -168,17 +169,17 @@ export default function ProductUpdateForm({ product, categories }: Props) {
                   fullWidth
                   type="number"
                   name="sale_price"
-                  label="Sale Price"
+                  label={t("Sale Price")}
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  placeholder="Sale Price"
+                  placeholder={t("Sale Price")}
                   value={values.sale_price}
                   errorText={touched.sale_price && errors.sale_price}
                 />
               </Grid>
 
               <Grid item xs={12}>
-                <Button type="submit">Save product</Button>
+                <Button type="submit">{t("Save product")}</Button>
               </Grid>
             </Grid>
           </form>

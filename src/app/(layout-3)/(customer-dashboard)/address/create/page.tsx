@@ -7,10 +7,11 @@ import { Button } from "@component/buttons";
 import DashboardPageHeader from "@component/DashboardPageHeader";
 // PAGE SECTION COMPONENTS
 import { AddressForm } from "@sections/customer-dashboard/address";
+import { t } from "@utils/utils";
 
 const HEADER_LINK = (
   <Link href="/address">
-    <Button color="primary">Back</Button>
+    <Button color="primary">{t("Back")}</Button>
   </Link>
 );
 
@@ -19,7 +20,7 @@ export default function CreateAddress() {
     <Fragment>
       <DashboardPageHeader
         button={HEADER_LINK}
-        title="Add New Address"
+        title={t("Add New Address")}
         Icon={<IconMapPin size={27} />}
       />
 

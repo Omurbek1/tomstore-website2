@@ -1,6 +1,12 @@
 import ceil from "lodash/ceil";
 import { differenceInMinutes } from "date-fns/differenceInMinutes";
 import isPropValid from "@emotion/is-prop-valid";
+import {
+  currency as formatCurrencyValue,
+  formatExchangeRate,
+  formatRelativeTime,
+  t as translate,
+} from "@lib/storefront-runtime";
 
 export const isValidProp = (prop: string) => isPropValid(prop);
 
@@ -26,19 +32,19 @@ export const convertHexToRGB = (hex: string) => {
 // GET THE DATE/TIME DIFFERENCE
 export const getDateDifference = (date: string) => {
   let diff = differenceInMinutes(new Date(), new Date(date));
-  if (diff < 60) return diff + " minutes ago";
+  if (diff < 60) return formatRelativeTime(diff, "minute");
 
   diff = ceil(diff / 60);
-  if (diff < 24) return `${diff} hour${diff === 0 ? "" : "s"} ago`;
+  if (diff < 24) return formatRelativeTime(diff, "hour");
 
   diff = ceil(diff / 24);
-  if (diff < 30) return `${diff} day${diff === 0 ? "" : "s"} ago`;
+  if (diff < 30) return formatRelativeTime(diff, "day");
 
   diff = ceil(diff / 30);
-  if (diff < 12) return `${diff} month${diff === 0 ? "" : "s"} ago`;
+  if (diff < 12) return formatRelativeTime(diff, "month");
 
   diff = diff / 12;
-  return `${diff.toFixed(1)} year${ceil(diff) === 0 ? "" : "s"} ago`;
+  return formatRelativeTime(Math.ceil(diff), "year");
 };
 
 export const renderProductCount = (
@@ -51,7 +57,11 @@ export const renderProductCount = (
 
   if (endNumber > totalProductLenth) endNumber = totalProductLenth;
 
-  return `Showing ${startNumber + 1}-${endNumber} of ${totalProductLenth} products`;
+  return translate("Showing {start}-{end} of {total} products", {
+    start: startNumber + 1,
+    end: endNumber,
+    total: totalProductLenth
+  });
 };
 
 /**
@@ -74,15 +84,8 @@ export function calculateDiscount(price: number, discount: number) {
  */
 
 export function currency(price: number, fraction: number = 2) {
-  // const { publicRuntimeConfig } = getConfig();
-  // currency: publicRuntimeConfig.currency,
-
-  const formatCurrency = new Intl.NumberFormat(undefined, {
-    currency: "USD",
-    style: "currency",
-    maximumFractionDigits: fraction,
-    minimumFractionDigits: fraction
-  });
-
-  return formatCurrency.format(price);
+  return formatCurrencyValue(price, fraction);
 }
+
+export { formatExchangeRate };
+export { translate as t };

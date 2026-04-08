@@ -12,6 +12,7 @@ import Typography, { Paragraph } from "@component/Typography";
 import { StyledLink } from "./styles";
 // CUSTOM DATA
 import { aboutLinks, customerCareLinks, iconList } from "./data";
+import { t } from "@utils/utils";
 
 export default function Footer1() {
   return (
@@ -26,9 +27,9 @@ export default function Footer1() {
                 </Link>
 
                 <Paragraph mb="1.25rem" color="gray.500" maxWidth="320px">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor libero id et, in
-                  gravida. Sit diam duis mauris nulla cursus. Erat et lectus vel ut sollicitudin
-                  elit at amet.
+                  {t(
+                    "Bonik is a marketplace for electronics, office equipment, and related services."
+                  )}
                 </Paragraph>
 
                 <AppStore />
@@ -36,13 +37,13 @@ export default function Footer1() {
 
               <Grid item lg={2} md={6} sm={6} xs={12}>
                 <Typography mb="1.25rem" lineHeight="1" fontSize={20} fontWeight="600">
-                  About Us
+                  {t("About Us")}
                 </Typography>
 
                 <div>
                   {aboutLinks.map((item, ind) => (
                     <StyledLink href="/" key={ind}>
-                      {item}
+                      {t(item)}
                     </StyledLink>
                   ))}
                 </div>
@@ -50,13 +51,13 @@ export default function Footer1() {
 
               <Grid item lg={3} md={6} sm={6} xs={12}>
                 <Typography mb="1.25rem" lineHeight="1" fontSize={20} fontWeight="600">
-                  Customer Care
+                  {t("Customer Care")}
                 </Typography>
 
                 <div>
                   {customerCareLinks.map((item, ind) => (
                     <StyledLink href="/" key={ind}>
-                      {item}
+                      {t(item)}
                     </StyledLink>
                   ))}
                 </div>
@@ -64,7 +65,7 @@ export default function Footer1() {
 
               <Grid item lg={3} md={6} sm={6} xs={12}>
                 <Typography mb="1.25rem" lineHeight="1" fontSize={20} fontWeight="600">
-                  Contact Us
+                  {t("Contact Us")}
                 </Typography>
 
                 <Typography py="0.3rem" color="gray.500">

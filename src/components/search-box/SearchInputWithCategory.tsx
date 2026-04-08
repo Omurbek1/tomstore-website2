@@ -12,6 +12,7 @@ import MenuItem from "@component/MenuItem";
 import { Span } from "@component/Typography";
 import TextField from "@component/text-field";
 import StyledSearchBox from "./styled";
+import { t } from "@utils/utils";
 
 const dropdownVariants = {
   hidden: {
@@ -38,7 +39,7 @@ const dropdownVariants = {
 
 export default function SearchInputWithCategory() {
   const [resultList, setResultList] = useState<string[]>([]);
-  const [category, setCategory] = useState("All Categories");
+  const [category, setCategory] = useState(categories[0]);
 
   const handleCategoryChange = (cat: string) => () => setCategory(cat);
 
@@ -70,7 +71,7 @@ export default function SearchInputWithCategory() {
           fullWidth
           onChange={handleSearch}
           className="search-field"
-          placeholder="Search and hit enter..."
+          placeholder={t("Search and hit enter...")}
         />
 
         <Menu
@@ -78,13 +79,13 @@ export default function SearchInputWithCategory() {
           className="category-dropdown"
           handler={(openMenu) => (
             <FlexBox className="dropdown-handler" alignItems="center" onClick={openMenu}>
-              <span>{category}</span>
+              <span>{t(category)}</span>
               <IconChevronDown size={18} stroke={1.5} />
             </FlexBox>
           )}>
           {categories.map((item) => (
             <MenuItem key={item} onClick={handleCategoryChange(item)}>
-              {item}
+              {t(item)}
             </MenuItem>
           ))}
         </Menu>

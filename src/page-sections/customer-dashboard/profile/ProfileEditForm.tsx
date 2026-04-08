@@ -13,6 +13,7 @@ import FlexBox from "@component/FlexBox";
 import { Button } from "@component/buttons";
 import TextField from "@component/text-field";
 import User from "@models/user.model";
+import { t } from "@utils/utils";
 
 const VALIDATION_SCHEMA = yup.object().shape({
   first_name: yup.string().required("required"),
@@ -71,7 +72,7 @@ export default function ProfileEditForm({ user }: { user: User }) {
                   <TextField
                     fullWidth
                     name="first_name"
-                    label="First Name"
+                    label={t("First Name")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.first_name}
@@ -83,7 +84,7 @@ export default function ProfileEditForm({ user }: { user: User }) {
                   <TextField
                     fullWidth
                     name="last_name"
-                    label="Last Name"
+                    label={t("Last Name")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.last_name}
@@ -96,7 +97,7 @@ export default function ProfileEditForm({ user }: { user: User }) {
                     fullWidth
                     name="email"
                     type="email"
-                    label="Email"
+                    label={t("Email")}
                     onBlur={handleBlur}
                     value={values.email}
                     onChange={handleChange}
@@ -107,7 +108,7 @@ export default function ProfileEditForm({ user }: { user: User }) {
                 <Grid item md={6} xs={12}>
                   <TextField
                     fullWidth
-                    label="Phone"
+                    label={t("Phone")}
                     name="contact"
                     onBlur={handleBlur}
                     value={values.contact}
@@ -121,7 +122,7 @@ export default function ProfileEditForm({ user }: { user: User }) {
                     fullWidth
                     type="date"
                     name="birth_date"
-                    label="Birth Date"
+                    label={t("Birth Date")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.birth_date}
@@ -132,7 +133,7 @@ export default function ProfileEditForm({ user }: { user: User }) {
             </Box>
 
             <Button type="submit" variant="contained" color="primary">
-              Save Changes
+              {t("Save Changes")}
             </Button>
           </form>
         )}
